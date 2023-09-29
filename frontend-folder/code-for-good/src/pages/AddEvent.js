@@ -22,7 +22,7 @@ const AddEvent = () => {
         <div>
             <h1>Please fill out the details below to add an event!</h1>
             <div className={styles.createEvent}>
-                <h1>Hello!</h1>
+                <h2>Create Event</h2>
                 <form onSubmit={handleFormSubmit}>
                     <label>
                         Title:
