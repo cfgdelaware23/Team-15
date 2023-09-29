@@ -1,6 +1,10 @@
-import {Request, Response, Router} from "express";
-import EventSchema from "../schema/Event";
 
-const users = Router();
+const express = require('express');
+const HttpError = require('../models/http-error')
+const Usercontrollers = require('../controllers/Usercontrollers')
 
-export default users;
+const userrouter = express.Router();
+
+userrouter.get("/".Usercontrollers.getUsers)
+
+export default userrouter;
