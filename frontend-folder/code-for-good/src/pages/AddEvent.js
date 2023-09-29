@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from "frontend-folder/code-for-good/src/styles/AddEvent.css";
+//import styles from "frontend-folder/code-for-good/src/styles/AddEvent.css";
 
 const AddEvent = () => {
     const [title, setTitle] = useState("");
@@ -8,7 +8,7 @@ const AddEvent = () => {
     const [zoom, setZoom] = useState("");
 
     return (
-        <div className={styles.createEvent}>
+        <div>
             <h1>Hello!</h1>
         </div>
     );
