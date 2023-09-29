@@ -7,4 +7,4 @@ const userrouter = express.Router();
 
 userrouter.get("/".Usercontrollers.getUsers)
 
-export default userrouter;
+module.exports = userrouter;
