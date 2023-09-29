@@ -12,4 +12,6 @@ const EventSchema = new Schema (
     { collection: "events" }
 );
 
-export default mongoose.model("event", EventSchema);
+module.exports = mongoose.model("event", EventSchema);
+
+// export default mongoose.model("event", EventSchema);
