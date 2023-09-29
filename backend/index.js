@@ -1,5 +1,5 @@
-//import users from "./routes/router_users";
-//import events from "./routes/router_events";
+import users from "./routes/router_users";
+import events from "./routes/router_events";
 
 
 const bodyParser = require("body-parser");
