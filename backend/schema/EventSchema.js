@@ -3,7 +3,6 @@ import { Schema } from "mongoose";
 
 const EventSchema = new Schema (
     {
-        id: {type: Number},
         title: {type: String},
         date: {type: String},
         recurring: {type: Number},
