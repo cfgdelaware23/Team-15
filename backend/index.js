@@ -1,20 +1,16 @@
-import userrouter from "./routes/router_users";
-import events from "./routes/router_events";
-
-
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const HttpError = require("./modals/http-error");
+const HttpError = require("./models/http-error");
 
 const eventrouter = require("./routes/router_events");
 const userrouter = require("./routes/router_users");
 
 
 app.use(bodyParser.json());
-app.use("/api/users", userrouter);
-app.use("/api/events", eventrouter);
+app.use("/api", userrouter);
+app.use("/api", eventrouter);
 
 app.use((req, res, next) => {
     const error = new HttpError('Could not find this route', 404);

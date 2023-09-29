@@ -1,7 +1,6 @@
-import {Request, Response, Router} from "express";
-import EventSchema from "../schema/EventSchema";
-
-const events = Router();
+const express = require('express');
+const EventSchema = require('../schema/EventSchema.js');
+const events = express.Router();
 
 events.post("/create-event", async (Request, Response) => {
     const { id, title, date, recurring, category, zoomLink } = Request.body;
@@ -18,4 +17,4 @@ events.post("/create-event", async (Request, Response) => {
     Response.status(201).json("New user created");
 })
 
-export default events;
+module.exports = events;
