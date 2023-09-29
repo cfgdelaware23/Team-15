@@ -49,7 +49,7 @@ const AddEvent = () => {
 
             </div>
         </div>
-        </div>
+       
     );
 };
 
