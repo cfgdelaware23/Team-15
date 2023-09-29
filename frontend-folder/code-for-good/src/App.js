@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Home from './pages/Home'
 import Decision from './pages/Decision'
 import AddEvent from './pages/AddEvent'
+import JoinEvent from './pages/JoinEvent'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Decision" element={<Decision />} />
           <Route path="/AddEvent" element={<AddEvent />} />
+          <Route path="/JoinEvent" element={<JoinEvent />} />
             
         </Routes>
       </BrowserRouter>
