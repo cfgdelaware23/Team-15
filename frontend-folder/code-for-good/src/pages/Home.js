@@ -1,7 +1,5 @@
 import React from 'react'
 import '../styles/Home.css'
-import AddEvent from './AddEvent'
-import Decision from './Decision'
 
 
 function Home() {
