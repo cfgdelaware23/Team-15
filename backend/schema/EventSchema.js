@@ -1,5 +1,8 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+
+
+const mongoose = require('mongoose')
+
+const Schema = mongoose.Schema;
 
 const EventSchema = new Schema (
     {
