@@ -1,4 +1,4 @@
-import users from "./routes/router_users";
+import userrouter from "./routes/router_users";
 import events from "./routes/router_events";
 
 
@@ -7,12 +7,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const HttpError = require("./modals/http-error");
-const userrouter = require("./routes/router_users");
 
 
 app.use(bodyParser.json());
-app.use('/api/users', userrouter);
-app.use('/api/events', events);
+app.use('/api', userrouter);
+app.use('/api', events);
 
 
 
