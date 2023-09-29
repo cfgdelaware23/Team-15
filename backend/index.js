@@ -7,11 +7,12 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const HttpError = require("./modals/http-error");
+const userrouter = require("./routes/router_users");
 
 
 app.use(bodyParser.json());
-app.use('/api', users);
-app.use('/api', events);
+app.use('/api/users', userrouter);
+app.use('/api/events', events);
 
 
 

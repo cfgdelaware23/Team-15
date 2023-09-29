@@ -1,6 +1,9 @@
-import {Request, Response, Router} from "express";
-import getPostModel from "../schema/Event";
+const express = require('express');
+const HttpError = require('../models/http-error')
+const Usercontrollers = require('../controllers/Usercontrollers')
 
-const users = Router();
+const userrouter = express.Router();
 
-export default users;
+userrouter.get("/".Usercontrollers.getUsers)
+
+export default userrouter;
