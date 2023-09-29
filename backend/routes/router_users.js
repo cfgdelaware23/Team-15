@@ -1,5 +1,5 @@
 import {Request, Response, Router} from "express";
-import getPostModel from "../schema/Event";
+import EventSchema from "../schema/Event";
 
 const users = Router();
 
