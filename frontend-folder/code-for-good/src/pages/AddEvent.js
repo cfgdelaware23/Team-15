@@ -49,6 +49,7 @@ const AddEvent = () => {
             </form>
 
         </div>
+        </div>
     );
 };
 
