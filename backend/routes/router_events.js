@@ -17,4 +17,9 @@ events.post("/create-event", async (Request, Response) => {
     Response.status(201).json("New user created");
 })
 
+events.post("/test", async (req, res) => {
+    console.log("test");
+    res.status(201);
+})
+
 module.exports = events;
