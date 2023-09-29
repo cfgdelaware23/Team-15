@@ -6,7 +6,8 @@ const HttpError = require("./models/http-error");
 
 const eventrouter = require("./routes/router_events");
 const userrouter = require("./routes/router_users");
-
+const URI = "mongodb+srv://hhong:11313Eagle@cluster0.ya35cje.mongodb.net/";
+console.log(process.env.MONGODB_URI);
 
 app.use(bodyParser.json());
 app.use("/api", userrouter);
@@ -26,7 +27,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-    .connect(process.env.MONGODB_URI)
+    .connect(URI)
     .then(()=>{
         app.listen(3000);
     })
