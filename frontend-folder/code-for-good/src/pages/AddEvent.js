@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import styles from "../styles/AddEvent.css";
 
+import { db } from '../firebase-config.js';
+import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
+
 const AddEvent = () => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
     const [isRecurring, setIsRecurring] = useState(false);
     const [zoom, setZoom] = useState("");
+
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -13,6 +17,20 @@ const AddEvent = () => {
         console.log("Date:", date);
         console.log("Recurring:", isRecurring);
         console.log("Zoom Link:", zoom);
+
+        let data = {
+            title: title,
+            date: date,
+            recurring: isRecurring,
+            zoom: zoom,
+        }
+
+        const temp1 = collection(db, "events");
+        try {
+            addDoc(temp1, data);
+        } catch (e) {
+            console.log(e); 
+        }
 
        
     };
@@ -48,7 +66,6 @@ const AddEvent = () => {
                 </form>
 
             </div>
-        </div>
         </div>
     );
 };
