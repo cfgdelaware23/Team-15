@@ -18,6 +18,10 @@ const AddEvent = () => {
     };
 
     return (
+
+        <div>
+            <h1>Please fill out the details below to add an event!</h1>
+
         <div className={styles.createEvent}>
             <h1>Hello!</h1>
             <form onSubmit={handleFormSubmit}>
@@ -43,6 +47,7 @@ const AddEvent = () => {
                 <br />
                 <button type="submit">Submit</button>
             </form>
+
         </div>
     );
 };
