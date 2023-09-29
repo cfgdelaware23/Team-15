@@ -1,3 +1,6 @@
+import userrouter from "./routes/router_users";
+import events from "./routes/router_events";
+
 
 const bodyParser = require("body-parser");
 const express = require("express");
