@@ -1,5 +1,5 @@
 import {Request, Response, Router} from "express";
-import EventSchema from "../schema/Event";
+import EventSchema from "../schema/EventSchema";
 
 const events = Router();
 

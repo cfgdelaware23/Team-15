@@ -4,14 +4,14 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const HttpError = require("./modals/http-error");
+
+const eventrouter = require("./routes/router_events");
 const userrouter = require("./routes/router_users");
 
 
 app.use(bodyParser.json());
-app.use('/api/users', userrouter);
-app.use('/api/events', events);
-
-
+app.use("/api/users", userrouter);
+app.use("/api/events", eventrouter);
 
 app.use((req, res, next) => {
     const error = new HttpError('Could not find this route', 404);
@@ -25,8 +25,6 @@ app.use((error, req, res, next) => {
     res.status(error.code || 500)
     res.json({ message: error.message || 'An unknown error occurred!' });
 });
-
-
 
 mongoose
     .connect(process.env.MONGODB_URI)

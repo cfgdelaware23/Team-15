@@ -17,4 +17,4 @@ const getallusers = async (req, res, next) => {
 
 
 
-export.getallusers = getallusers;
+exports.getallusers = getallusers;
