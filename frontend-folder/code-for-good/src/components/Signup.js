@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Select from 'react-select';
-import '../styles/Signup.css'
+import '../styles/Signup.css';
 
 const options = [
   { value: '1', label: 'Entertainment' },
@@ -9,11 +9,52 @@ const options = [
 ];
 
 function Signup() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    interests: [],
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSelectChange = (selectedOptions) => {
+    setFormData({
+      ...formData,
+      interests: selectedOptions.map(option => option.label),
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.text();
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div>
       <h1>Create Account</h1>
-      <form >
-        <div className='fieldContainer'>
+      <form onSubmit={handleSubmit}>
+      <div className='fieldContainer'>
           <label>
             First Name:
             <input type="text" required />
@@ -58,15 +99,14 @@ function Signup() {
           name="interests"
           options={options}
           className="basic-multi-select"
-          classNamePrefix="select"/>
+          classNamePrefix="select"
+          onChange={handleSelectChange}
+        />
             </div>
-        
-    
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
       </form>
-
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
