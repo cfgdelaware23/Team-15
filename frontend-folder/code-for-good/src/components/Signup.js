@@ -35,6 +35,10 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
     try {
       const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
@@ -57,37 +61,39 @@ function Signup() {
       <div className='fieldContainer'>
           <label>
             First Name:
-            <input type="text" required />
+            <input type="text" name="firstName" required onChange={handleInputChange} />
+
           </label>
         </div>
         <div className='fieldContainer'>
           <label>
             Last Name:
-            <input type="text" required />
+            <input type="text" name="lastName" required onChange={handleInputChange} />
+
           </label>
         </div>
         <div className='fieldContainer'>
           <label>
             Email:
-            <input type="email"  required />
+            <input type="email" name="email" required onChange={handleInputChange} />
           </label>
         </div>
         <div className='fieldContainerLong'>
           <label>
             Phone Number:
-            <input type="text" required />
+            <input type="text" name="phoneNumber" required onChange={handleInputChange} />
           </label>
         </div>
         <div className='fieldContainerLong'>
           <label>
             Password:
-            <input type="password" required />
+            <input type="password" name="password" required onChange={handleInputChange} />
           </label>
         </div>
         <div className='fieldContainerLong'>
           <label>
             Confirm Password:
-            <input type="password" required />
+            <input type="password" name="confirmPassword" required onChange={handleInputChange} />
           </label>
         </div>
         <div className='fieldContainerLong'>
