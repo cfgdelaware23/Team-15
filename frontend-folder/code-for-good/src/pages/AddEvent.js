@@ -9,7 +9,7 @@ const AddEvent = () => {
 
     return (
         <div>
-            <h1>Hello!</h1>
+            <h1>Please fill out the details below to add an event!</h1>
         </div>
     );
 };
