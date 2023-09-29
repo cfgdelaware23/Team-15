@@ -3,17 +3,14 @@ import { Schema } from "mongoose";
 
 const EventSchema = new Schema (
     {
+        id: {type: Number},
         title: {type: String},
         date: {type: String},
-        recurring: {type: Boolean},
-        interests: {type: String},
-        zoomLink: {type: String}
+        recurring: {type: Number},
+        category: {type: [String]},
+        zoomLink: {type: String},
     },
     { collection: "events" }
 );
 
-function getEventModel() {
-  if ("event" in mongoose.models) return mongoose.models.Event;
-  return mongoose.model("event", PostSchema);
-}
-export default getPostModel;
+export default mongoose.model("event", EventSchema);
