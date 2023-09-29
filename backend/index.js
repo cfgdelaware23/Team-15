@@ -1,15 +1,15 @@
+import users from "./routes/router_users";
+import events from "./routes/router_events";
+
 const bodyParser = require("body-parser");
 const express = require("express");
-const PORT = 80;
 const app = express();
 const mongoose = require("mongoose");
 
 
 app.use(bodyParser.json());
-app.use('/api', router2);
-app.use('/api', router);
-
-app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+app.use('/api', users);
+app.use('/api', events);
 
 mongoose
     .connect(process.env.MONGODB_URI)
