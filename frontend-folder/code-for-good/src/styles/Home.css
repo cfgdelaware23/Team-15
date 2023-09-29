@@ -1,0 +1,30 @@
+.pageLayout {
+  margin-top: 60px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* Login - Layout */
+.contentLayout {
+  padding-top: 35px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* Login - Divider */
+.container {
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.border {
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+.content {
+  padding: 0 10px 0 10px;
+}
