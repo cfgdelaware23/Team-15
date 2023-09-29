@@ -31,8 +31,6 @@ const AddEvent = () => {
         } catch (e) {
             console.log(e); 
         }
-
-       
     };
 
     return (
