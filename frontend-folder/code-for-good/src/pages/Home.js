@@ -2,6 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
+
     <div className={styles.pageLayout}>
       <h1>Home Page</h1>
       <p>
