@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/UserSignIn.css";
 
 import { db } from '../firebase-config.js';
@@ -54,6 +55,7 @@ function UserSignIn() {
                 </div>
             </div>
             <button className="btn btn-primary mt-10" type="submit">Submit</button>
+            <Link className="create-account-link" to={"/UserSignup"}><strong>Create Account</strong></Link>
             <div>{error}</div>
         </form>
     </div>;
