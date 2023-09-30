@@ -37,7 +37,8 @@ label {
 
 input[type="text"],
 input[type="date"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="number"] {
     width: 50%;
     margin-left: 10px;
     padding: 8px;

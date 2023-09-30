@@ -8,7 +8,9 @@ const AddEvent = () => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
     const [isRecurring, setIsRecurring] = useState(false);
+    const [recurringDays, setRecurringDays] = useState("");
     const [zoom, setZoom] = useState("");
+
 
 
     const handleFormSubmit = (e) => {
@@ -22,6 +24,7 @@ const AddEvent = () => {
             title: title,
             date: date,
             recurring: isRecurring,
+            recurringDays: isRecurring ? recurringDays : null,
             zoom: zoom,
         }
 
@@ -55,6 +58,12 @@ const AddEvent = () => {
                         <input type="checkbox" checked={isRecurring} onChange={(e) => setIsRecurring(e.target.checked)} />
                     </label>
                     <br />
+                    {isRecurring && (
+                        <label>
+                            Reoccurs after how many days? (Enter a number):
+                            <input type="number" value={recurringDays} onChange={(e) => setRecurringDays(e.target.value)} />
+                        </label>
+                    )}
                     <label>
                         Zoom Link:
                         <input type="text" value={zoom} onChange={(e) => setZoom(e.target.value)} />
