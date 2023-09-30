@@ -35,14 +35,24 @@
 //         console.log(err);
 //     });
 
+const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const HttpError = require("./models/http-error");
 
 require("dotenv").config();
 
+const eventrouter = require("./routes/router_events");
+const userrouter = require("./routes/router_users");
+const URI = "mongodb+srv://hhong:11313Eagle@cluster0.ya35cje.mongodb.net/";
+console.log(process.env.MONGODB_URI);
 const app = express();
 const port = process.env.PORT || 5000;
+
+app.use(bodyParser.json());
+app.use("/api", userrouter);
+app.use("/api", eventrouter);
 
 app.use(cors());
 app.use(express.json());

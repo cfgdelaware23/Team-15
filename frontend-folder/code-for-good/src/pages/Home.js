@@ -1,13 +1,21 @@
 import React from 'react'
+import '../styles/Home.css'
+import AddEvent from './AddEvent'
+import Decision from './Decision'
+import UserSignup from '../components/UserSignup'
+
 
 function Home() {
   return (
 
-    <div className={styles.pageLayout}>
+    <div className={"pageLayout"}>
       <h1>Home Page</h1>
       <p>
-        This is the home page. Our project aims to help The American Council of the Blind (ACB) expand and maintain their virtual volunteer-led programming, while maintaining accessibility for the blind and low vision community
+        Our project aims to help ACB expand and maintain their virtual volunteer-led programming, while maintaining accessibility for the blind and low vision community.
       </p>
+
+      <UserSignup/>
+
     </div>
   )
 }

@@ -8,6 +8,7 @@ const userSchema = new Schema({
     email: { type: String, required: true},
     phoneNumber: {type: String, required: true},
     password: { type: String, required: true},
+    phoneNumber: { type: String, required: true},
     //array 
     interests: { type: String, required: true}, //double check if this is an array or string
 });

@@ -1,0 +1,34 @@
+.pageLayout {
+  margin-top: 60px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 60px;
+}
+.login {
+  width: clamp(400px,40vw, 700px);
+}
+label {
+  display: block;
+}
+
+input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 20%;  /* or any size you prefer */
+}
+
+.fieldContainerLong {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 30%;  /* longer fields */
+}
