@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Description = () => {
     return (
-        <div className="background">
+        <div className="background" id="homePg">
         <div className="description">
             <h1 id="title">Our Project</h1>
             <h1 className="text" id="homeText">
@@ -14,7 +14,7 @@ const Description = () => {
                 volunteer-led programming, while maintaining accessibility for the blind
                 and low vision community. Sign up to create, attend, and be a part of our amazing community!
             </h1>
-            <h1>
+            <h1 id="homeText">
                 Click below to join our community or log in instead!
             </h1>
             <div className="buttonContainer">
@@ -30,6 +30,7 @@ const Description = () => {
                 </Link>
             </div>
         </div>
+        <img className="homeMainImage" src="../MomandDaughterSmiling.jpg" alt="image of Mom and daughter"></img>
         </div>
     );
     };

@@ -47,3 +47,14 @@
     font-style: normal;
     font-weight: 800;
 }
+
+.homeMainImage {
+    width: 900px;
+    height: 700px;
+    padding-left: 50px;
+}
+
+#homePg {
+    display: flex;
+    justify-content: flex-start;
+}
