@@ -59,7 +59,7 @@ function AdminSignup() {
             }
         })
 
-        window.location.href = `/Decision?id=${userId[0]}`;
+        window.location.href = `/AdminHome/${userId[0]}`;
         
     } catch (e) {
         console.log(e); 
