@@ -37,7 +37,9 @@ function UserSignIn() {
 
     };
 
-    return <div>
+    return (
+        <div className='signin-page'>
+        <div className='signin-container'>
         <h1>Sign In</h1>
         <form onSubmit={ handleClick}>
             <div className="Signin">
@@ -58,7 +60,9 @@ function UserSignIn() {
             <Link className="create-account-link" to={"/UserSignup"}><strong>Create Account</strong></Link>
             <div>{error}</div>
         </form>
-    </div>;
+        </div>
+    </div>
+  );
 }
 
 export default UserSignIn;
