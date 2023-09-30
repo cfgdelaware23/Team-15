@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/Home.css'
 import AddEvent from './AddEvent'
 import Decision from './Decision'
-import UserSignup from '../components/UserSignup'
+import UserSignup from './UserSignup'
 
 
 function Home() {
@@ -13,8 +13,6 @@ function Home() {
       <p>
         Our project aims to help ACB expand and maintain their virtual volunteer-led programming, while maintaining accessibility for the blind and low vision community.
       </p>
-
-      <UserSignup/>
 
     </div>
   )
