@@ -36,12 +36,12 @@ def send_email(from_email, to_emails, subject, body, smtp_password, html_content
         server.send_message(msg)
 
 # Example usage
-send_email(
-    from_email="your_email@gmail.com",
-    to_emails=["recipient1@example.com", "recipient2@example.com"],
-    subject="Hello!",
-    body="This is the plain text content of the email.",
-    html_content="<h1>This is an HTML Email</h1><p>With some <strong>bold text</strong>.</p>",
-    smtp_password="your_app_password_or_regular_password",  # Use the App Password here
-    attachments=["path_to_file1.txt", "path_to_file2.jpg"]
-)
+#send_email(
+#    from_email="your_email@gmail.com",
+#   to_emails=["recipient1@example.com", "recipient2@example.com"],
+#   subject="Hello!",
+#    body="This is the plain text content of the email.",
+#   html_content="<h1>This is an HTML Email</h1><p>With some <strong>bold text</strong>.</p>",
+#    smtp_password="your_app_password_or_regular_password",  # Use the App Password here
+#    attachments=["path_to_file1.txt", "path_to_file2.jpg"]
+#)
