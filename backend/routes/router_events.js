@@ -57,4 +57,11 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
+router.route("./id").get((req, res) => {
+    Event.findById(req.params.id)
+        .then(event => res.json(event))
+        .catch(err => res.status(400).json('Error: ' + err));
+}   );  
+
 module.exports = router;
