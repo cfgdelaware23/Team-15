@@ -28,7 +28,6 @@ const EventDashboard = () => {
           id: doc.id,
           ...doc.data(),
         }));
-
         const documentRef = doc(db, "users", userId);
 
         
@@ -37,7 +36,7 @@ const EventDashboard = () => {
             if (docSnapshot.exists()) {
               // Document exists, you can access its data using docSnapshot.data()
               const documentData = docSnapshot.data();
-              //console.log("Document data:", documentData);
+              console.log("Document data:", documentData);
               //setUserData(documentData)
               setUserInterests(documentData.interests)
             } else {
@@ -68,12 +67,18 @@ const EventDashboard = () => {
     return <div>Error: {error}</div>;
   }
 
-  const filteredEvents = eventData.filter((event) =>
+
+
+  let filteredEvents = eventData.filter((event) =>
     event.interests.some(
       (element) =>
         Array.isArray(userInterests) && userInterests.includes(element)
     )
   );
+  
+  if (filteredEvents.length === 0) {
+    filteredEvents = eventData;
+  }
 
 return (
     <div className="background" id="dashboard">
