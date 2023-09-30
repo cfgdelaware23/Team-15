@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
 import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
+import styles from "../styles/AdminVerifyDetails.css";
 
 const AdminVerifyDetails = () => {
   const { tentTitle } = useParams();
