@@ -50,7 +50,7 @@ input[type="number"] {
 
 /* Submit button styles */
 button[type="submit"] {
-    background-color: lightblue;
+    background-color: #93C5CD;
     color: #fff;
     font-size: 18px;
     padding: 10px 20px;
