@@ -42,8 +42,6 @@ function Signup() {
         console.log(e); 
     }
 
-    console.log(firstName);
-
   };
 
   return (
