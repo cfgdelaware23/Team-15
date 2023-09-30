@@ -30,7 +30,7 @@ function UserSignIn() {
             setError("Wrong Password!");
         }
         else {
-            window.location.href = `/Decision?id=${userId[0]}`;
+            window.location.href = `/Decision/${userId[0]}`;
         }
 
         console.log(userId);

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Decision.css'
 import styled from 'styled-components';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Button = styled.button`
 background-color: #93C5CD;
@@ -18,14 +18,22 @@ margin: 10px;
 
 &:hover {
   background-color: darkblue;
+<<<<<<< HEAD
  
+}
+
+&:hover {
+  background-color: darkblue;
+=======
+
+ 
+
+>>>>>>> 3a8a52e278f21fc83e193464859c80afbca61d64
 }
 `;
 
 
 function Decision() {
-  const user = useParams()
-  console.log(user)
   return (
     <div className="background" id="decision">
       <h1 id="title">Choose to join an event or add an event</h1>
@@ -37,7 +45,7 @@ function Decision() {
         </button>
         <div id="vl"></div>
         <button className="addEvent" onClick={() => {
-          window.location.href = "/eventdashboard"
+          window.location.href = "/JoinEvent"
         }}>
           Join Event 
         </button>
