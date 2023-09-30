@@ -9,6 +9,13 @@ const options = [
     { value: '1', label: 'Entertainment' },
     { value: '2', label: 'Sports' },
     { value: '3', label: 'Educational' },
+    { value: '4', label: 'Cooking' },
+    { value: '5', label: 'Music'},
+    { value: '6', label: 'Business'},
+    { value: '7', label: 'Politics'},
+    { value: '8', label: 'News'},
+    { value: '9', label: 'Board Games'},
+    { value: '10', label: 'Literature'}
 ];
 
 const AddEvent = () => {
