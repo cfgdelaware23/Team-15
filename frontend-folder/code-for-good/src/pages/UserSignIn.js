@@ -17,12 +17,14 @@ function UserSignIn() {
         const querySnapshot = await getDocs(collectionRef);
 
         const userId = [];
+        let adminCheck = false;
 
         querySnapshot.forEach((doc) => {
             const documentData = doc.data();
 
             if (documentData.email === email && documentData.password === password) {
                 userId.push(doc.id);
+                adminCheck = documentData.admin;
             }
         })
         if (userId.length === 0) {
@@ -30,6 +32,11 @@ function UserSignIn() {
             setError("Wrong Password!");
         }
         else {
+            console.log(adminCheck);
+            if (adminCheck) {
+                window.location.href = `/AdminHome/${userId[0]}`;
+                return;
+            }
             window.location.href = `/Decision/${userId[0]}`;
         }
 

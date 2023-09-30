@@ -28,7 +28,7 @@ function App() {
           <Route path="/UserSignIn" element={<UserSignup />} />
           <Route path="/Decision/:userId" element={<Decision />} />
           <Route path="/AddEvent/:userId" element={<AddEvent />} />
-          <Route path="/AdminHome" element={<AdminHome />} />
+          <Route path="/AdminHome/:userId" element={<AdminHome />} />
           <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard/:userId" element={<EventDashboard />} />
