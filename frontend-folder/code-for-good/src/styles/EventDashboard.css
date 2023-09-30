@@ -20,6 +20,19 @@
   font-weight: bold;
 }
 
+.eventDash th.title {
+  width: 50%; 
+}
+
+.eventDash th.categories {
+  width: 25%; 
+}
+
+.eventDash th.date {
+  width: 25%; 
+}
+
+
 .eventDash tr:nth-child(even) {
   background-color: #f9f9f9;
 }

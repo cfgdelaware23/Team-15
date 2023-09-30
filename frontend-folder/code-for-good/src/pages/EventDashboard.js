@@ -47,18 +47,18 @@ const EventDashboard = () => {
       <table>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Categories</th>
-            <th>Date</th>
+            <th className="categories">Categories</th>
+            <th className="title">Title</th>
+            <th className="date">Date</th>
           </tr>
         </thead>
         <tbody>
           {eventData.map((event) => (
             <tr key={event.id}>
+              <td>{event.interests.join(", ")}</td>
               <td>
                 <Link to={`/events/${event.title}`}>{event.title}</Link>
               </td>
-              <td>{event.interests.join(", ")}</td>
               <td>{event.date}</td>
             </tr>
           ))}
