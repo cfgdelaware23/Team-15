@@ -36,7 +36,7 @@ function App() {
           <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard/:userId" element={<EventDashboard />} />
-          <Route path="/events/:eventTitle" element={<EventDetails />} />
+          <Route path="/events/:eventTitle/:userId" element={<EventDetails />} />
           <Route path="/tentEventDashboard/:userId" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
           <Route path="/Logout" element={<Logout />} />
