@@ -5,7 +5,6 @@ import '../styles/UserSignup.css';
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
-import {Link} from 'react-router-dom'
 
 const options = [
   { value: "1", label: "Entertainment" },

@@ -98,6 +98,8 @@ const EventDetails = () => {
   }
 
   return (
+    <div className="background" id="eventDet">
+    <div className="padding">
     <div className="details-container">
       <article>
         <h2>{eventData.title}</h2>
@@ -125,6 +127,8 @@ const EventDetails = () => {
         </div>
         <button onClick={addUser}>Add Event</button>
       </article>
+    </div>
+    </div>
     </div>
   );
 };
