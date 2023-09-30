@@ -4,12 +4,74 @@ import '../styles/UserSignup.css';
 import { Link } from "react-router-dom";
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+import emailjs from 'emailjs-com';
 
 const options = [
   { value: '1', label: 'Entertainment' },
   { value: '2', label: 'Sports' },
   { value: '3', label: 'Educational' },
 ];
+
+//email sender
+const sendEmail = (fromEmail, toEmail, subject, body) => {
+  // Template parameters
+  const templateParams = {
+      from_name: fromEmail,
+      to_name: toEmail,
+      message: body,
+  };
+
+  return emailjs.send('service_koh4h1e', 'template_gt1ckdt', templateParams)
+      .then((response) => {
+          console.log('Email sent successfully:', response.status, response.text);
+          return true;
+      })
+      .catch((error) => {
+          console.log('Failed to send the email:', error);
+          return false;
+      });
+}
+
+
+
+
+
+// Calculate Jaccard similarity coefficient
+const jaccardSimilarity = (a, b) => {
+  const intersection = a.filter(value => b.includes(value)).length;
+  const union = new Set([...a, ...b]).size;
+  return intersection / union;
+};
+
+
+
+const findMostSimilarUser = async (currentUserInterests, currentUserEmail) => {
+  const usersRef = collection(db, "users");
+  const allUsers = await getDocs(usersRef);
+
+  let maxSimilarity = 0;
+  let mostSimilarUser = null;
+
+  allUsers.forEach((doc) => {
+      const userData = doc.data();
+
+      // Exclude the current user from comparison
+      if (userData.email !== currentUserEmail && userData.interests) {
+          const similarity = jaccardSimilarity(currentUserInterests, userData.interests);
+          
+          if (similarity > maxSimilarity) {
+              maxSimilarity = similarity;
+              mostSimilarUser = userData;
+          }
+      }
+  });
+
+  return mostSimilarUser;
+}
+
+
+
+
 
 function UserSignup() {
   const [firstName, setFirstName] = useState("");
@@ -39,6 +101,18 @@ function UserSignup() {
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
+        
+        const similarUser = await findMostSimilarUser(data.interests, data.email);
+        try{
+          sendEmail("akshat.chavan2022@gmail.com", similarUser.email,'You have a match! Check out your matches page to see who it is!')
+        } catch (e) {
+          console.log(e);
+        }
+        try{
+          sendEmail("akshat.chavan2022@gmail.com", data.email, "You have a match! Check out your matches page to see who it is!")
+        } catch (e) {
+          console.log(e);
+        }
 
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
