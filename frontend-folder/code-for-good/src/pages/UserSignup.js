@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/UserSignup.css';
-<<<<<<< HEAD
-=======
-import { Link } from "react-router-dom";
->>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
@@ -73,9 +69,6 @@ const findMostSimilarUser = async (currentUserInterests, currentUserEmail) => {
 }
 
 
-
-
-
 function UserSignup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -104,18 +97,10 @@ function UserSignup() {
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
-        
+        // find similar user
         const similarUser = await findMostSimilarUser(data.interests, data.email);
-        try{
-          sendEmail("akshat.chavan2022@gmail.com", similarUser.email,'You have a match! Check out your matches page to see who it is!')
-        } catch (e) {
-          console.log(e);
-        }
-        try{
-          sendEmail("akshat.chavan2022@gmail.com", data.email, "You have a match! Check out your matches page to see who it is!")
-        } catch (e) {
-          console.log(e);
-        }
+
+
 
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
@@ -194,9 +179,6 @@ function UserSignup() {
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
       </form>
     </div>
-    <div className='mt-1'>
-          <p>Already a user? <Link to={"/UserSignIn"}><strong>Login here</strong></Link></p>
-      </div>
     </div>
   );
 }
