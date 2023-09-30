@@ -12,6 +12,7 @@ const EventDashboard = () => {
   const [userInterests, setUserInterests] = useState([]);
 
   const [eventData, setEventData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -37,6 +38,13 @@ const EventDashboard = () => {
               //console.log("Document data:", documentData);
               setUserData(documentData)
               setUserInterests(userData.interests)
+              const a = eventData.filter((event) =>
+                    event.interests.some(
+                    (element) =>
+                        Array.isArray(userInterests) && userInterests.includes(element)
+                    )
+                );
+              setFilteredData(a)
             } else {
               console.log("Document does not exist.");
             }
@@ -65,13 +73,6 @@ const EventDashboard = () => {
     return <div>Error: {error}</div>;
   }
 
-  const filteredEvents = eventData.filter((event) =>
-    event.interests.some(
-      (element) =>
-        Array.isArray(userInterests) && userInterests.includes(element)
-    )
-  );
-
 return (
     <div className="eventDash">
       <table>
@@ -83,7 +84,7 @@ return (
           </tr>
         </thead>
         <tbody>
-          {filteredEvents.map((event) => (
+          {filteredData.map((event) => (
             <tr key={event.id}>
               <td>{event.interests.join(", ")}</td>
               <td>
