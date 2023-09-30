@@ -34,16 +34,9 @@ const EventDashboard = () => {
           .then((docSnapshot) => {
             if (docSnapshot.exists()) {
               const documentData = docSnapshot.data();
-              
-              // userInterests
+              //console.log("Document data:", documentData);
+              //setUserData(documentData)
               setUserInterests(documentData.interests)
-              const filtered = eventData.filter((event) =>
-                event.interests.some(
-                  (element) =>
-                    Array.isArray(userInterests) &&
-                    userInterests.includes(element)
-                )
-              );
             } else {
               console.log("Document does not exist.");
             }

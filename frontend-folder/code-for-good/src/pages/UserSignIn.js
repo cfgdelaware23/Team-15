@@ -48,7 +48,7 @@ function UserSignIn() {
                     <div className='fieldContainerLong'>
                         <label>
                             Email:
-                            <input type="text" onChange={(e) => setEmail(e.target.value)} required />
+                            <input type="email" onChange={(e) => setEmail(e.target.value)} required />
                         </label>
                     </div>
                     <div className='fieldContainerLong'>
