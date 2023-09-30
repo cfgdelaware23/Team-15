@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
 
 const AdminVerifyDetails = () => {
   const { tentTitle } = useParams();
@@ -43,6 +43,41 @@ const AdminVerifyDetails = () => {
     return <div>Event not found</div>;
   }
 
+  const handleApprove = async () => {
+    console.log("approved")
+    let data = {
+      title: tentEventData.title,
+      date: tentEventData.date,
+      recurring: tentEventData.recurring,
+      recurringDays: tentEventData.recurringDays,
+      interests: tentEventData.interests,
+      zoom: tentEventData.zoom
+    };
+
+    const temp1 = collection(db, "events");
+    try{
+        addDoc(temp1, data);
+
+        const collectionRef = collection(db, 'tentative-events');
+        const querySnapshot = await getDocs(collectionRef);
+        
+        const tentEventId = []
+        querySnapshot.forEach((doc) => {
+            const documentData = doc.data();
+
+            if (documentData.title === tentEventData.title){
+                tentEventId.push(doc.id);
+            }
+        })
+
+        deleteDoc(doc(db, 'tentative-events', tentEventId[0]))
+        window.location.href = `/TentEventDashboard`;
+
+    } catch(e) {
+        console.log(e);
+    }
+  }
+
   return (
     <div className="tentEventDetails">
       <article>
@@ -52,6 +87,8 @@ const AdminVerifyDetails = () => {
         <p>Categories: {tentEventData.interests.join(", ")}</p>
         <p>Zoom Link: {tentEventData.zoom}</p>
       </article>
+      <button onClick={() => {
+        handleApprove()}}>Approve</button>
     </div>
   );
 };
