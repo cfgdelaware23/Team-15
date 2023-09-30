@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/Home.css'
 import AddEvent from './AddEvent'
 import Decision from './Decision'
-import UserSignup from '../components/UserSignup'
+import UserSignup from './UserSignup'
 
 
 function Home() {
