@@ -32,8 +32,8 @@ const EventDashboard = () => {
   return (
     <div className="eventDash">
       {eventData.map((event) => (
-        <div className="event-preview" key={event.id}>
-          <Link to={`/events/${event.id}`}>
+        <div className="event-preview" key={event.title}>
+          <Link to={`/events/${event.title}`}>
             <h2>{event.title}</h2>
           </Link>
         </div>
