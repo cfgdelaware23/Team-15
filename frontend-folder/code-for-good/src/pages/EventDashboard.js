@@ -8,7 +8,7 @@ import "../styles/EventDashboard.css";
 
 const EventDashboard = () => {
   const userId = useParams().userId
-  const [userData, setUserData] = useState(null);
+  //const [userData, setUserData] = useState(null);
   const [userInterests, setUserInterests] = useState([]);
 
   const [eventData, setEventData] = useState([]);
@@ -35,8 +35,8 @@ const EventDashboard = () => {
               // Document exists, you can access its data using docSnapshot.data()
               const documentData = docSnapshot.data();
               //console.log("Document data:", documentData);
-              setUserData(documentData)
-              setUserInterests(userData.interests)
+              //setUserData(documentData)
+              setUserInterests(documentData.interests)
             } else {
               console.log("Document does not exist.");
             }
