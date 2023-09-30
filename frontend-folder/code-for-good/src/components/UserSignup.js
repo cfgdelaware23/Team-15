@@ -33,6 +33,7 @@ function UserSignup() {
       phoneNumber: phoneNumber,
       password: password,
       interests: interests,
+      admin: false,
     }
 
     const temp1 = collection(db, "users");
