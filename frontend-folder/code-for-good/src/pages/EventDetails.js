@@ -56,6 +56,7 @@ const EventDetails = () => {
             volunteers: documentData.volunteers,
           });
         }
+        window.location.href = `decisions/${userId}`
       });
     } catch (e) {
       console.log(e);
