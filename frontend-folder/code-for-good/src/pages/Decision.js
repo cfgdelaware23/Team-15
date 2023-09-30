@@ -13,6 +13,10 @@ cursor: pointer;
 padding: 10px 60px;
 border-radius: 5px;
 margin: 10px;
+
+&:hover {
+  background-color: darkblue;
+}
 `;
 
 
