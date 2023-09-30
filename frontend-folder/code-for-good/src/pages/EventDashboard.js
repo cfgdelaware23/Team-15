@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { db } from '../firebase-config.js';
-import { collection, getDocs } from 'firebase/firestore'
+import { doc, collection, getDocs, getDoc } from 'firebase/firestore'
 import "../styles/EventDashboard.css";
 
 
 const EventDashboard = () => {
+  const userId = useParams().userId
+  const [userData, setUserData] = useState(null);
+  const [userInterests, setUserInterests] = useState([]);
+
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,12 +20,31 @@ const EventDashboard = () => {
       try {
         const collectionRef = collection(db, "events");
         const querySnapshot = await getDocs(collectionRef);
-
+        
         const eventData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
 
+        const documentRef = doc(db, "users", userId);
+
+        
+        getDoc(documentRef)
+          .then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+              // Document exists, you can access its data using docSnapshot.data()
+              const documentData = docSnapshot.data();
+              //console.log("Document data:", documentData);
+              setUserData(documentData)
+              setUserInterests(userData.interests)
+            } else {
+              console.log("Document does not exist.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching document:", error);
+          });
+        
         setEventData(eventData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -29,8 +52,8 @@ const EventDashboard = () => {
       } finally {
         setLoading(false);
       }
-    };
 
+    };
     fetchData();
   }, []);
 
@@ -42,7 +65,14 @@ const EventDashboard = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
+  const filteredEvents = eventData.filter((event) =>
+    event.interests.some(
+      (element) =>
+        Array.isArray(userInterests) && userInterests.includes(element)
+    )
+  );
+
+return (
     <div className="eventDash">
       <table>
         <thead>
@@ -53,7 +83,7 @@ const EventDashboard = () => {
           </tr>
         </thead>
         <tbody>
-          {eventData.map((event) => (
+          {filteredEvents.map((event) => (
             <tr key={event.id}>
               <td>{event.interests.join(", ")}</td>
               <td>

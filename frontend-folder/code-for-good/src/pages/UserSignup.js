@@ -76,6 +76,8 @@ function UserSignup() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [interests, setInterests] = useState([]);
+  const [attendees, setAttendees] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
 
   const handleSelectChange = (selectedOptions) => {
     setInterests(selectedOptions.map(option => option.label))
@@ -92,6 +94,8 @@ function UserSignup() {
       password: password,
       interests: interests,
       admin: false,
+      attendees: attendees,
+      volunteers: volunteers
     }
 
     const temp1 = collection(db, "users");
@@ -114,7 +118,7 @@ function UserSignup() {
             }
         })
 
-        window.location.href = `/Decision?id=${userId[0]}`;
+        window.location.href = `/Decision/${userId[0]}`;
         
     } catch (e) {
         console.log(e); 
