@@ -38,7 +38,7 @@ function Decision() {
         </button>
         <div id="vl"></div>
         <button className="addEvent" onClick={() => {
-          window.location.href = `/JoinEvent/${userId}`
+          window.location.href = `/EventDashboard/${userId}`
         }}>
           Join Event 
         </button>
