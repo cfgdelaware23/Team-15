@@ -2,3 +2,48 @@
     font-size: 18px;
     margin-bottom: 20px;
 }
+
+.signup_button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 125px;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+#homeText {
+    width: 600px;
+    text-align: left;
+}
+
+.background {
+    background-color: #E4EBEE;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 100px;
+    height: 700px;
+}
+
+#title {
+    padding-top: 30px;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+}

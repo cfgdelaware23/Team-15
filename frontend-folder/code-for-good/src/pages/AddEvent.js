@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import Select from 'react-select';
 import styles from "../styles/AddEvent.css";
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
+
+const options = [
+    { value: '1', label: 'Entertainment' },
+    { value: '2', label: 'Sports' },
+    { value: '3', label: 'Educational' },
+];
 
 const AddEvent = () => {
     const [title, setTitle] = useState("");
@@ -10,6 +17,11 @@ const AddEvent = () => {
     const [isRecurring, setIsRecurring] = useState(false);
     const [recurringDays, setRecurringDays] = useState("");
     const [zoom, setZoom] = useState("");
+    const [interests, setInterests] = useState([]);
+  
+    const handleSelectChange = (selectedOptions) => {
+      setInterests(selectedOptions.map(option => option.label))
+    };
 
 
 
@@ -25,6 +37,7 @@ const AddEvent = () => {
             date: date,
             recurring: isRecurring,
             recurringDays: isRecurring ? recurringDays : null,
+            interests: interests,
             zoom: zoom,
         }
 
@@ -34,6 +47,15 @@ const AddEvent = () => {
         } catch (e) {
             console.log(e); 
         }
+
+        setTitle("");
+        setDate("");
+        setIsRecurring(false);
+        setRecurringDays("");
+        setZoom("");
+        setInterests("");
+
+
     };
 
     return (
@@ -41,6 +63,7 @@ const AddEvent = () => {
         <div>
             <h1>Please fill out the details below to add an event!</h1>
             <div className={styles.createEvent}>
+                <div className = "container">
                 <h2>Create Event</h2>
                 <form onSubmit={handleFormSubmit}>
                     <label>
@@ -60,7 +83,14 @@ const AddEvent = () => {
                     <br />
                     {isRecurring && (
                         <label>
+<<<<<<< HEAD
                             Recurring after how many days:
+=======
+
+
+                            Reoccurs after how many days? (Enter a number):
+
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
                             <input type="number" value={recurringDays} onChange={(e) => setRecurringDays(e.target.value)} />
                         </label>
                     )}
@@ -68,9 +98,18 @@ const AddEvent = () => {
                         Zoom Link:
                         <input type="text" value={zoom} onChange={(e) => setZoom(e.target.value)} />
                     </label>
+                    <Select
+                        isMulti
+                        name="interests"
+                        options={options}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                        onChange={handleSelectChange}
+                    />
                     <br />
                     <button type="submit">Submit</button>
                 </form>
+                </div>  
 
             </div>
         </div>

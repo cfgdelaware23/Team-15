@@ -35,22 +35,21 @@ margin: 10px;
 
 function Decision() {
   return (
-    <div>
-      <h1>Choose to join an event or add an event</h1>
-      <Link to="/AddEvent">
-      <Button>
-        Add Event 
-      </Button>
-      </Link>
-
-      <Link to="/JoinEvent">
-      <Button >
-        Join Event 
-      </Button>
-      </Link>
-
-
-
+    <div className="background" id="decision">
+      <h1 id="title">Choose to join an event or add an event</h1>
+      <div className="flexDecision">
+        <button className="addEvent" onClick={() => {
+          window.location.href = "/AddEvent";
+        }}>
+          Add Event 
+        </button>
+        <div id="vl"></div>
+        <button className="addEvent" onClick={() => {
+          window.location.href = "/JoinEvent"
+        }}>
+          Join Event 
+        </button>
+      </div>
     </div>
 
     

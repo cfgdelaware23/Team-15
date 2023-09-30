@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/UserSignup.css';
+<<<<<<< HEAD
+=======
+import { Link } from "react-router-dom";
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
@@ -190,6 +194,9 @@ function UserSignup() {
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
       </form>
     </div>
+    <div className='mt-1'>
+          <p>Already a user? <Link to={"/UserSignIn"}><strong>Login here</strong></Link></p>
+      </div>
     </div>
   );
 }

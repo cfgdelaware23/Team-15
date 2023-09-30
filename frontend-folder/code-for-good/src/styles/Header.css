@@ -1,3 +1,8 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;  
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -24,6 +29,7 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 4px;
+  margin-left: 30px
 }
 
 /* Optional: Add some hover effects */

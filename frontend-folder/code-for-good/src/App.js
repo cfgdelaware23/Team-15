@@ -34,6 +34,7 @@ function App() {
           <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard" element={<EventDashboard />} />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           <Route path="/events/:id" element={<EventDetails />} />
 =======
@@ -41,6 +42,11 @@ function App() {
           <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
 >>>>>>> Stashed changes
+=======
+          <Route path="/events/:eventTitle" element={<EventDetails />} />
+          <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
+          <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
         </Routes>
       </BrowserRouter>
     </div>

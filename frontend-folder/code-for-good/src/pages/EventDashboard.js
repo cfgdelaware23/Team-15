@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
+import { db } from '../firebase-config.js';
+import { collection, getDocs } from 'firebase/firestore'
+import "../styles/EventDashboard.css";
 
-import {db} from '../firebase-config.js';
-import {collection, getDocs} from 'firebase/firestore'
 
 const EventDashboard = () => {
-  const [eventData, setEventData] = useState([]); // Use state to store event data
+  const [eventData, setEventData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch event data from Firestore inside a useEffect hook
     const fetchData = async () => {
       try {
         const collectionRef = collection(db, "events");
@@ -20,26 +22,50 @@ const EventDashboard = () => {
           ...doc.data(),
         }));
 
-        setEventData(eventData); // Update state with fetched data
+        setEventData(eventData);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData(); 
-  }, []); // Pass an empty dependency array to run the effect only once
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="eventDash">
-      {eventData.map((event) => (
-        <div className="event-preview" key={event.id}>
-          <Link to={`/events/${event.id}`}>
-            <h2>{event.title}</h2>
-          </Link>
-        </div>
-      ))}
+      <table>
+        <thead>
+          <tr>
+            <th className="categories">Categories</th>
+            <th className="title">Title</th>
+            <th className="date">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {eventData.map((event) => (
+            <tr key={event.id}>
+              <td>{event.interests.join(", ")}</td>
+              <td>
+                <Link to={`/events/${event.title}`}>{event.title}</Link>
+              </td>
+              <td>{event.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default EventDashboard;
