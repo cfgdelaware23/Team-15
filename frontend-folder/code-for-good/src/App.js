@@ -7,23 +7,15 @@ import Decision from './pages/Decision'
 import AddEvent from './pages/AddEvent'
 import JoinEvent from './pages/JoinEvent'
 import AdminHome from './pages/AdminHome';
-import UserSignup from './components/UserSignup';
-
-function App() {
-  return (
-    <div className="App">  
 import UserSignup from './pages/UserSignup'
 import UserSignIn from './pages/UserSignIn'
 import Description from './pages/Description';
 import EventDashboard from "./pages/EventDashboard";
 import EventDetails from "./pages/EventDetails";
 
-
 function App() {
   return (
     <div className="App">
-      
-      <Header />
       <BrowserRouter>
         <Header />
         <Routes>
