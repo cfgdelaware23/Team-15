@@ -98,29 +98,31 @@ const EventDetails = () => {
   }
 
   return (
-    <div className="eventDetails">
+    <div className="details-container">
       <article>
         <h2>{eventData.title}</h2>
-        <table className="details-table">
-          <tbody>
+        <div className="eventDetails"> 
+          <table className="details-table">
+            <tbody>
             <tr>
-              <td>Date:</td>
-              <td>{eventData.date}</td>
-            </tr>
-            <tr>
-              <td>Recurring Days:</td>
-              <td>{eventData.recurringDays}</td>
-            </tr>
-            <tr>
-              <td>Categories:</td>
-              <td>{eventData.interests.join(", ")}</td>
-            </tr>
-            <tr>
-              <td>Zoom Link:</td>
-              <td>{eventData.zoom}</td>
-            </tr>
-          </tbody>
-        </table>
+                <td>Date:</td>
+                <td>{eventData.date}</td>
+              </tr>
+              <tr>
+                <td>Recurring Days:</td>
+                <td>{eventData.recurringDays}</td>
+              </tr>
+              <tr>
+                <td>Categories:</td>
+                <td>{eventData.interests.join(", ")}</td>
+              </tr>
+              <tr>
+                <td>Zoom Link:</td>
+                <td>{eventData.zoom}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <button onClick={addUser}>Add Event</button>
       </article>
     </div>
@@ -129,3 +131,4 @@ const EventDetails = () => {
 
 
 export default EventDetails;
+

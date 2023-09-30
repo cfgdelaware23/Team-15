@@ -1,3 +1,5 @@
+/* EventDetails.css */
+
 .eventDetails {
   padding: 20px;
 }
@@ -6,16 +8,24 @@
   margin-bottom: 20px;
 }
 
+.details-container {
+  background-color: #E4EBEE; /* Blue background */
+  padding: 20px; /* Space around the table */
+  border-radius: 8px; /* Optional: for rounded corners */
+  margin-bottom: 20px; /* Space below the blue background */
+  width: 50%; /* Adjust width as needed */
+  margin: auto; /* Centering the container */
+}
+
 .details-table {
   border-collapse: collapse;
-  margin-bottom: 20px;
-  width: 50%;  
-  margin: auto; 
+  width: 100%; /* This will now take 100% width of the .details-container */
+  background-color: #ffffff; /* White background for the table */
 }
 
 .details-table td {
   border: 1px solid black;
-  padding: 4px; 
+  padding: 4px;
   text-align: left;
 }
 
