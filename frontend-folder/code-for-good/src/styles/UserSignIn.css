@@ -1,20 +1,7 @@
-<<<<<<< Updated upstream
 .Signin {
     display: flex;
     flex-direction: column;
 }
-<<<<<<< HEAD
-=======
-    .signin-page {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start; 
-        min-height: 100vh;
-        background-color: #f0f0f0;
-        padding-top: 50px;
-    }
-  .signin-container {
-=======
 
 #formContainer {
     display: flex;
@@ -31,21 +18,16 @@
         background-color: #E4EBEE;
         padding-top: 50px;
     }
-.signin-container {
+  .signin-container {
     display: flex;
     flex-direction: column;
->>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
     background-color: #f9f9f9; 
     padding: 20px;
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-<<<<<<< HEAD
-    width: 100%;
-=======
     width: 500px;
->>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
     max-width: 1000px; 
-}
+  }
 .create-account-link {
     display: inline-block;
     margin-top: 10px;
@@ -58,9 +40,6 @@
     text-decoration: underline;
   }
   
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
   .wrapperSignIn {
     display: flex;
     flex-direction: column;
@@ -71,4 +50,3 @@
   flex-direction: row;
   justify-content: center;
 }
->>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
