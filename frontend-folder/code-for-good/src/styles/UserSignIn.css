@@ -1,4 +1,35 @@
+<<<<<<< Updated upstream
 .Signin {
     display: flex;
     flex-direction: column;
 }
+=======
+    .signin-page {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; 
+        min-height: 100vh;
+        background-color: #f0f0f0;
+        padding-top: 50px;
+    }
+  .signin-container {
+    background-color: #f9f9f9; 
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 1000px; 
+  }
+.create-account-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;  
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .create-account-link:hover {
+    text-decoration: underline;
+  }
+  
+>>>>>>> Stashed changes
