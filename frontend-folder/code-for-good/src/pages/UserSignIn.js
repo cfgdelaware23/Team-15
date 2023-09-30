@@ -47,7 +47,7 @@ function UserSignIn() {
     return (
         <div className='signin-page'>
         <div className='signin-container'>
-        <h1>Sign In</h1>
+        <h1 id="title">Sign In</h1>
         <div className="anotherWrapper">
         <div className="form-container">
             <form onSubmit={ handleClick}>

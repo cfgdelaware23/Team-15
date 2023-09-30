@@ -4,7 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import { db } from '../firebase-config.js';
 import { doc, collection, getDocs, getDoc } from 'firebase/firestore'
 import "../styles/EventDashboard.css";
+import Header2 from "../components/Header2"
 import Event from "../components/Event";
+
 
 
 const EventDashboard = () => {
@@ -75,6 +77,7 @@ const EventDashboard = () => {
 
 return (
     <div className="background" id="dashboard">
+    <Header2 />
       <table className="table">
         <thead>
           {/*<tr>
@@ -129,7 +132,8 @@ return (
         </div>
       </table>
     </div>
-  );
+  
+);
 };
 
 export default EventDashboard;

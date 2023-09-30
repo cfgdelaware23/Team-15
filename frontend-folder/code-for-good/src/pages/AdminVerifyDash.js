@@ -3,6 +3,7 @@ import "../styles/AdminVerifyDash.css";
 import { Link } from "react-router-dom";
 import { db } from "../firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
+import Header2 from "../components/Header2";
 
 const AdminVerifyDash = () => {
   const [tentEventData, setTentEventData] = useState([]); // Use state to store event data
@@ -30,6 +31,7 @@ const AdminVerifyDash = () => {
 
   return (
     <div className="eventDash">
+      <Header2></Header2>
        <table>
         <thead>
           <tr>

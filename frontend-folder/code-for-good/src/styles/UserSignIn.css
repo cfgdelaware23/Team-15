@@ -50,3 +50,8 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.signupFlex {
+  display: flex;
+  justify-content: center;
+}

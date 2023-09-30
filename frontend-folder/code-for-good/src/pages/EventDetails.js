@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
 import { doc, collection, getDocs, updateDoc } from "firebase/firestore";
+import Header2 from "../components/Header2";
 import '../styles/EventDetails.css'
 
 const EventDetails = () => {
@@ -99,36 +100,37 @@ const EventDetails = () => {
 
   return (
     <div className="background" id="eventDet">
-    <div className="padding">
-    <div className="details-container">
-      <article>
-        <h2>{eventData.title}</h2>
-        <div className="eventDetails"> 
-          <table className="details-table">
-            <tbody>
-            <tr>
-                <td>Date:</td>
-                <td>{eventData.date}</td>
-              </tr>
-              <tr>
-                <td>Recurring Days:</td>
-                <td>{eventData.recurringDays}</td>
-              </tr>
-              <tr>
-                <td>Categories:</td>
-                <td>{eventData.interests.join(", ")}</td>
-              </tr>
-              <tr>
-                <td>Zoom Link:</td>
-                <td>{eventData.zoom}</td>
-              </tr>
-            </tbody>
-          </table>
+      <Header2 />
+      <div className="padding">
+        <div className="details-container">
+          <article>
+            <h2>{eventData.title}</h2>
+            <div className="eventDetails">
+              <table className="details-table">
+                <tbody>
+                  <tr>
+                    <td>Date:</td>
+                    <td>{eventData.date}</td>
+                  </tr>
+                  <tr>
+                    <td>Recurring Days:</td>
+                    <td>{eventData.recurringDays}</td>
+                  </tr>
+                  <tr>
+                    <td>Categories:</td>
+                    <td>{eventData.interests.join(", ")}</td>
+                  </tr>
+                  <tr>
+                    <td>Zoom Link:</td>
+                    <td>{eventData.zoom}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button onClick={addUser}>Add Event</button>
+          </article>
         </div>
-        <button onClick={addUser}>Add Event</button>
-      </article>
-    </div>
-    </div>
+      </div>
     </div>
   );
 };
