@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import '../styles/Signup.css';
+import '../styles/UserSignup.css';
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
@@ -11,7 +11,7 @@ const options = [
   { value: '3', label: 'Educational' },
 ];
 
-function Signup() {
+function UserSignup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -103,4 +103,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default UserSignup;
