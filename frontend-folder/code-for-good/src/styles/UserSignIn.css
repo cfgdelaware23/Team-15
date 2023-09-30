@@ -13,17 +13,19 @@
     .signin-page {
         display: flex;
         justify-content: center;
-        align-items: flex-start; 
+        align-items: flex-start;
         min-height: 100vh;
-        background-color: #f0f0f0;
+        background-color: #E4EBEE;
         padding-top: 50px;
     }
   .signin-container {
+    display: flex;
+    flex-direction: column;
     background-color: #f9f9f9; 
     padding: 20px;
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    width: 100%;
+    width: 500px;
     max-width: 1000px; 
   }
 .create-account-link {
@@ -38,3 +40,13 @@
     text-decoration: underline;
   }
   
+  .wrapperSignIn {
+    display: flex;
+    flex-direction: column;
+}
+
+.anotherWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
