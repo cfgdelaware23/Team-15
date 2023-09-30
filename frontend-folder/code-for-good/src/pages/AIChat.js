@@ -79,6 +79,7 @@ function App() {
   console.log(rendernotes)
   
   return (
+    <div><Header/>
     <div className='background' id="aiChat">
       <div className='aiChat'>
         <div className="questionTitle" id='title'>Ask Your Question Below!</div>
@@ -103,6 +104,7 @@ function App() {
           </div>
         </div>*/}
       </div>
+    </div>
     </div>
   )
 }
