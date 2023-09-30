@@ -10,9 +10,9 @@ function Home() {
 
     <div className={"pageLayout"}>
       <h1>Home Page</h1>
-      <p>
+      <p><center>
         Our project aims to help ACB expand and maintain their virtual volunteer-led programming, while maintaining accessibility for the blind and low vision community.
-      </p>
+        </center> </p>
 
     </div>
   )
