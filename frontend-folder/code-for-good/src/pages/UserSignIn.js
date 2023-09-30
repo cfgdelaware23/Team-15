@@ -24,8 +24,9 @@ function UserSignIn() {
                 userId.push(doc.id);
             }
         })
-        if (userId.length == 0) {
+        if (userId.length === 0) {
             console.error('User not found');
+            setError("Wrong Password!");
         }
         else {
             window.location.href = `/Decision?id=${userId[0]}`;
