@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
 import { doc, collection, getDocs, updateDoc } from "firebase/firestore";
+import Header2 from "../components/Header2";
 
 const EventDetails = () => {
   const { eventTitle, userId } = useParams();
@@ -97,15 +98,18 @@ const EventDetails = () => {
   }
 
   return (
-    <div className="eventDetails">
-      <article>
-        <h2>{eventData.title}</h2>
-        <p>Date is on {eventData.date}</p>
-        <p>This event occurs every {eventData.recurringDays} days</p>
-        <p>Categories: {eventData.interests.join(", ")}</p>
-        <p>Zoom Link: {eventData.zoom}</p>
-        <button onClick={addUser}>Add Event</button>
-      </article>
+    <div>
+      <Header2 />
+      <div className="eventDetails">
+        <article>
+          <h2>{eventData.title}</h2>
+          <p>Date is on {eventData.date}</p>
+          <p>This event occurs every {eventData.recurringDays} days</p>
+          <p>Categories: {eventData.interests.join(", ")}</p>
+          <p>Zoom Link: {eventData.zoom}</p>
+          <button onClick={addUser}>Add Event</button>
+        </article>
+      </div>
     </div>
   );
 };

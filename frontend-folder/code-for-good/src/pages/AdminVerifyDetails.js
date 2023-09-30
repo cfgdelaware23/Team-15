@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
 import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
 import styles from "../styles/AdminVerifyDetails.css";
+import Header2 from "../components/Header2.js"
 
 const AdminVerifyDetails = () => {
   const { tentTitle } = useParams();
@@ -89,16 +90,25 @@ const AdminVerifyDetails = () => {
   };
 
   return (
-    <div className="tentEventDetails">
-      <article>
-        <h2>{tentEventData.title}</h2>
-        <p>Date is on {tentEventData.date}</p>
-        <p>This event occurs every {tentEventData.recurring} days</p>
-        <p>Categories: {tentEventData.interests.join(", ")}</p>
-        <p>Zoom Link: {tentEventData.zoom}</p>
-      </article>
-      <button onClick={() => {
-        handleApprove()}}>Approve</button>
+    <div>
+        <Header2 />
+
+      <div className="tentEventDetails">
+        <article>
+          <h2>{tentEventData.title}</h2>
+          <p>Date is on {tentEventData.date}</p>
+          <p>This event occurs every {tentEventData.recurring} days</p>
+          <p>Categories: {tentEventData.interests.join(", ")}</p>
+          <p>Zoom Link: {tentEventData.zoom}</p>
+        </article>
+        <button
+          onClick={() => {
+            handleApprove();
+          }}
+        >
+          Approve
+        </button>
+      </div>
     </div>
   );
 };

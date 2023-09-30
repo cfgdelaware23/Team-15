@@ -14,12 +14,13 @@ import EventDetails from "./pages/EventDetails";
 import AdminSignup from './pages/AdminSignup';
 import AdminVerifyDash from './pages/AdminVerifyDash';
 import AdminVerifyDetails from './pages/AdminVerifyDetails';
+import Logout from './pages/Logout';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Description />} />
           <Route path="/UserSignUp" element={<UserSignup />} />
@@ -35,6 +36,7 @@ function App() {
           <Route path="/events/:eventTitle" element={<EventDetails />} />
           <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
+          <Route path="/Logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </div>
