@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/UserSignup.css';
+import { Link } from "react-router-dom";
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 
@@ -116,6 +117,9 @@ function UserSignup() {
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
       </form>
     </div>
+    <div className='mt-1'>
+          <p>Already a user? <Link to={"/UserSignIn"}><strong>Login here</strong></Link></p>
+      </div>
     </div>
   );
 }
