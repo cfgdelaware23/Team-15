@@ -115,10 +115,7 @@ function UserSignup() {
           const from_name = "Code For Good";
           const toEmail = similarUser.email;
           const body = `You have similar interests to a new user, ${data.firstName} ${data.lastName}!`;
-<<<<<<< HEAD
-=======
           sendEmail(from_name, toEmail, body);
->>>>>>> akshat-main
 
 
         const collectionRef = collection(db, 'users');
