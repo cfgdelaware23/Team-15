@@ -16,7 +16,7 @@ const EventDashboard = () => {
       try {
         const collectionRef = collection(db, "events");
         const querySnapshot = await getDocs(collectionRef);
-
+        
         const eventData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -29,8 +29,8 @@ const EventDashboard = () => {
       } finally {
         setLoading(false);
       }
-    };
 
+    };
     fetchData();
   }, []);
 
