@@ -12,6 +12,7 @@ import UserSignIn from './pages/UserSignIn'
 import Description from './pages/Description';
 import EventDashboard from "./pages/EventDashboard";
 import EventDetails from "./pages/EventDetails";
+import AdminSignup from './pages/AdminSignup';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/AddEvent" element={<AddEvent />} />
           <Route path="/JoinEvent" element={<JoinEvent />} />
           <Route path="/AdminHome" element={<AdminHome />} />
+          <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard" element={<EventDashboard />} />
           <Route path="/events/:eventTitle" element={<EventDetails />} />
