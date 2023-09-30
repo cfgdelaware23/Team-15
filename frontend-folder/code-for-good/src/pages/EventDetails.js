@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
 import { doc, collection, getDocs, updateDoc } from "firebase/firestore";
+import '../styles/EventDetails.css'
 
 const EventDetails = () => {
   const { eventTitle, userId } = useParams();
@@ -100,14 +101,31 @@ const EventDetails = () => {
     <div className="eventDetails">
       <article>
         <h2>{eventData.title}</h2>
-        <p>Date is on {eventData.date}</p>
-        <p>This event occurs every {eventData.recurringDays} days</p>
-        <p>Categories: {eventData.interests.join(", ")}</p>
-        <p>Zoom Link: {eventData.zoom}</p>
+        <table className="details-table">
+          <tbody>
+            <tr>
+              <td>Date:</td>
+              <td>{eventData.date}</td>
+            </tr>
+            <tr>
+              <td>Recurring Days:</td>
+              <td>{eventData.recurringDays}</td>
+            </tr>
+            <tr>
+              <td>Categories:</td>
+              <td>{eventData.interests.join(", ")}</td>
+            </tr>
+            <tr>
+              <td>Zoom Link:</td>
+              <td>{eventData.zoom}</td>
+            </tr>
+          </tbody>
+        </table>
         <button onClick={addUser}>Add Event</button>
       </article>
     </div>
   );
 };
+
 
 export default EventDetails;
