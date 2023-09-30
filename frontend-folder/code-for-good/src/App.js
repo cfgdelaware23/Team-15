@@ -5,7 +5,6 @@ import Header from './components/Header'
 import Home from './pages/Home'
 import Decision from './pages/Decision'
 import AddEvent from './pages/AddEvent'
-import JoinEvent from './pages/JoinEvent'
 import AdminHome from './pages/AdminHome';
 import UserSignup from './pages/UserSignup'
 import UserSignIn from './pages/UserSignIn'
@@ -27,13 +26,12 @@ function App() {
           <Route path="/UserSignIn" element={<UserSignIn />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/UserSignIn" element={<UserSignup />} />
-          <Route path="/Decision" element={<Decision />} />
-          <Route path="/AddEvent" element={<AddEvent />} />
-          <Route path="/JoinEvent" element={<JoinEvent />} />
+          <Route path="/Decision/:userId" element={<Decision />} />
+          <Route path="/AddEvent/:userId" element={<AddEvent />} />
           <Route path="/AdminHome" element={<AdminHome />} />
           <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
-          <Route path="/EventDashboard" element={<EventDashboard />} />
+          <Route path="/EventDashboard/:userId" element={<EventDashboard />} />
           <Route path="/events/:eventTitle" element={<EventDetails />} />
           <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
