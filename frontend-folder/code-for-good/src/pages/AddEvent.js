@@ -60,50 +60,49 @@ const AddEvent = () => {
 
     return (
 
-        <div>
-            <h1>Please fill out the details below to add an event!</h1>
+        <div className="background" id="eventBg">
+            <h1 id="title">Please fill out the details below to add an event!</h1>
             <div className={styles.createEvent}>
-                <div className = "container">
-                <h2>Create Event</h2>
-                <form onSubmit={handleFormSubmit}>
-                    <label>
-                        Title:
-                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-                    </label>
-                    <br />
-                    <label>
-                        Date:
-                        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-                    </label>
-                    <br />
-                    <label>
-                        Recurring:
-                        <input type="checkbox" checked={isRecurring} onChange={(e) => setIsRecurring(e.target.checked)} />
-                    </label>
-                    <br />
-                    {isRecurring && (
+                <div className = "wrapperEvent">
+                    <form onSubmit={handleFormSubmit}>
                         <label>
-
-                            Reoccurs after how many days? (Enter a number):
-
-                            <input type="number" value={recurringDays} onChange={(e) => setRecurringDays(e.target.value)} />
+                            Title:
+                            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                         </label>
-                    )}
-                    <label>
-                        Zoom Link:
-                        <input type="text" value={zoom} onChange={(e) => setZoom(e.target.value)} />
-                    </label>
-                    <Select
-                        isMulti
-                        name="interests"
-                        options={options}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        onChange={handleSelectChange}
-                    />
-                    <br />
-                    <button type="submit">Submit</button>
-                </form>
+                        <br />
+                        <label>
+                            Date:
+                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                        </label>
+                        <br />
+                        <label>
+                            Recurring:
+                            <input type="checkbox" checked={isRecurring} onChange={(e) => setIsRecurring(e.target.checked)} />
+                        </label>
+                        <br />
+                        {isRecurring && (
+                            <label>
+
+                                Reoccurs after how many days? (Enter a number):
+
+                                <input type="number" value={recurringDays} onChange={(e) => setRecurringDays(e.target.value)} />
+                            </label>
+                        )}
+                        <label>
+                            Zoom Link:
+                            <input type="text" value={zoom} onChange={(e) => setZoom(e.target.value)} />
+                        </label>
+                        <Select
+                            isMulti
+                            name="interests"
+                            options={options}
+                            className="basic-multi-select"
+                            classNamePrefix="select"
+                            onChange={handleSelectChange}
+                        />
+                        <br />
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>  
 
             </div>
