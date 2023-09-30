@@ -84,7 +84,7 @@ function UserSignup() {
         <div className='fieldContainerLong'>
           <label>
             Confirm Password:
-            <input type="password" name="confirmPassword" required  />
+            <input type="password" name="confirmPassword" required/>
           </label>
         </div>
         <div className='fieldContainerLong'>
