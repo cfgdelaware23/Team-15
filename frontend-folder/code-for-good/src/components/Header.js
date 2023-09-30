@@ -11,12 +11,21 @@ const Header = () => {
           <div className="logo-container">
               <img src={logo} alt="Website Logo" />
           </div>
-          <div className="button-container">
-              <Link className="nav-link mx-4" to="/UserSignup">
-                  <button type="button" className="signup-button">
-                      Sign up
-                  </button>
-              </Link>
+          <div className="wrapper">
+            <div className="button-container">
+                <Link className="nav-link mx-4" to="/UserSignup">
+                    <button type="button" className="signup-button">
+                        Sign up
+                    </button>
+                </Link>
+            </div>
+            <div className="button-container">
+                <Link className="nav-link mx-4" to="/">
+                    <button type="button" className="signup-button">
+                        Home
+                    </button>
+                </Link>
+            </div>
           </div>
       </header>
   );

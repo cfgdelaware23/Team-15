@@ -6,23 +6,30 @@ import { Link } from 'react-router-dom';
 
 const Description = () => {
     return (
+        <div className="background">
         <div className="description">
-        <h1>Our Project</h1>
-        <h1 className="text">
-            Our project aims to help ACB expand and maintain their virtual
-            volunteer-led programming, while maintaining accessibility for the blind
-            and low vision community. Sign up to create, attend, and be a part of our amazing community!
-        </h1>
-        <h1>
-            Select your user type to get started!
-        </h1>
-        <Link to="/Home">
-            <button className="button">
-                Sign up!
-            </button>
-        </Link>
-
-
+            <h1 id="title">Our Project</h1>
+            <h1 className="text" id="homeText">
+                Our project aims to help ACB expand and maintain their virtual
+                volunteer-led programming, while maintaining accessibility for the blind
+                and low vision community. Sign up to create, attend, and be a part of our amazing community!
+            </h1>
+            <h1>
+                Click below to join our community or log in instead!
+            </h1>
+            <div className="buttonContainer">
+                <Link to="/UserSignup">
+                    <button type="button" className="signup_button">
+                        Sign up
+                    </button>
+                </Link>
+                <Link to="/UserSignIn">
+                    <button type="button" className="signup_button">
+                        Log In
+                    </button>
+                </Link>
+            </div>
+        </div>
         </div>
     );
     };
