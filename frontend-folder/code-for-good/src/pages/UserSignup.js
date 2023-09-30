@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/UserSignup.css';
-<<<<<<< HEAD
-=======
-import { Link } from "react-router-dom";
->>>>>>> 2d87a451d129a5ccfeb42cf83306fa813335decf
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
