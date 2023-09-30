@@ -61,7 +61,8 @@ function UserSignup() {
   };
 
   return (
-    <div>
+    <div className='container'>
+      <div className="form-container">
       <h1>Create Account</h1>
       <form onSubmit={handleSubmit}>
       <div className='fieldContainer'>
@@ -115,6 +116,7 @@ function UserSignup() {
             </div>
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
       </form>
+    </div>
     </div>
   );
 }
