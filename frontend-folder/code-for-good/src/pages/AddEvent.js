@@ -25,7 +25,7 @@ const AddEvent = () => {
             zoom: zoom,
         }
 
-        const temp1 = collection(db, "events");
+        const temp1 = collection(db, "tentative-events");
         try {
             addDoc(temp1, data);
         } catch (e) {
