@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
-background-color: lightblue;
+background-color: #93C5CD;
 color: #fff;
 font-size: 18px;
 font-family: 'Poppins', sans-serif;
@@ -19,6 +19,10 @@ margin: 10px;
 &:hover {
   background-color: darkblue;
  
+}
+
+&:hover {
+  background-color: darkblue;
 }
 `;
 

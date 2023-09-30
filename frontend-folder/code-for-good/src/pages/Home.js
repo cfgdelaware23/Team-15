@@ -14,6 +14,8 @@ function Home() {
         Our project aims to help ACB expand and maintain their virtual volunteer-led programming, while maintaining accessibility for the blind and low vision community.
         </center> </p>
 
+      {/* <UserSignup/> */}
+
     </div>
   )
 }
