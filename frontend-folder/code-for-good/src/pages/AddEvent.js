@@ -23,6 +23,7 @@ const AddEvent = () => {
             date: date,
             recurring: isRecurring,
             zoom: zoom,
+            numVolunteers: 1,
         }
 
         const temp1 = collection(db, "events");

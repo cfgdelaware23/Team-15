@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import '../styles/Signup.css';
+import '../styles/UserSignup.css';
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
@@ -11,12 +11,13 @@ const options = [
   { value: '3', label: 'Educational' },
 ];
 
-function Signup() {
+function UserSignup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [isVolunteer, setIsVolunteer] = useState(null);
   const [interests, setInterests] = useState([]);
 
   const handleSelectChange = (selectedOptions) => {
@@ -32,6 +33,7 @@ function Signup() {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
+      volunteer: isVolunteer,
       interests: interests,
     }
 
@@ -41,6 +43,7 @@ function Signup() {
     } catch (e) {
         console.log(e); 
     }
+    
 
   };
 
@@ -85,6 +88,12 @@ function Signup() {
           </label>
         </div>
         <div className='fieldContainerLong'>
+            <label>
+                Are you a volunteer?
+                <input type="checkbox" checked={isVolunteer} onChange={(e) => setIsVolunteer(e.target.checked)} />
+            </label>
+        </div>
+        <div className='fieldContainerLong'>
         <label className="form-label">
           What are your interests?
         </label>
@@ -103,4 +112,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default UserSignup;
