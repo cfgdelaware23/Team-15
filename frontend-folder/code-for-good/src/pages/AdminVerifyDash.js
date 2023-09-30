@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-import "../styles/Home.css";
-=======
 import "../styles/AdminVerifyDash.css";
->>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
 import { Link } from "react-router-dom";
-
 import { db } from "../firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -35,7 +30,6 @@ const AdminVerifyDash = () => {
 
   return (
     <div className="eventDash">
-<<<<<<< HEAD
       {tentEventData.map((event) => (
         <div className="event-preview" key={event.title}>
           <Link to={`/tentEvents/${event.title}`}>
@@ -43,7 +37,6 @@ const AdminVerifyDash = () => {
           </Link>
         </div>
       ))}
-=======
        <table>
         <thead>
           <tr>
@@ -64,7 +57,6 @@ const AdminVerifyDash = () => {
       ))}
       </tbody>
       </table>
->>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
     </div>
   );
 };
