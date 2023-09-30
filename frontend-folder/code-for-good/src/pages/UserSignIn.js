@@ -4,6 +4,7 @@ import "../styles/UserSignIn.css";
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+import Header from '../components/Header';
 
 function UserSignIn() {
     const [email, setEmail] = useState("");
@@ -45,6 +46,8 @@ function UserSignIn() {
     };
 
     return (
+        <div>
+        <Header/>
         <div className='signin-page'>
         <div className='signin-container'>
         <h1 id="title">Sign In</h1>
@@ -74,6 +77,7 @@ function UserSignIn() {
         </form>
         </div>
         </div>
+    </div>
     </div>
     </div>
   );

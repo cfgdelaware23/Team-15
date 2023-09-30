@@ -5,6 +5,7 @@ import '../styles/UserSignup.css';
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
+import Header from '../components/Header';
 
 const options = [
   { value: "1", label: "Entertainment" },
@@ -105,22 +106,15 @@ function UserSignup() {
       interests: interests,
       admin: false,
     }
+    
 
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
+        console.log("try statement");
         
-        const similarUser = await findMostSimilarUser(data.interests, data.email);
-        if (similarUser && similarUser.email) {
-          const from_name = "Code For Good";
-          const toEmail = similarUser.email;
-          const body = `You have similar interests to a new user, ${data.firstName} ${data.lastName}!`;
-          sendEmail(from_name, toEmail, body);
-
-
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
-
         const userId = [];
         querySnapshot.forEach((doc) => {
             const documentData = doc.data();
@@ -132,13 +126,14 @@ function UserSignup() {
 
         window.location.href = `/Decision/${userId[0]}`;
         
-    } } catch (e) {
+     } catch (e) {
         console.log(e); 
     }
 
   };
 
   return (
+    <div><Header/>
     <div className='container'>
       <div className="form-container">
       <h1>Create Account</h1>
@@ -193,13 +188,14 @@ function UserSignup() {
         />
             </div>
       <div className="signupFlex">
-        <button className="btn btn-primary mt-10" type="submit">Create Account</button>
+        <button className="btn btn-primary mt-10" type="submit" >Create Account</button>
       </div>
       </form>
     </div>
     <div className='mt-1'>
           <p>Already a user? <Link to={"/UserSignIn"}><strong>Login here</strong></Link></p>
       </div>
+    </div>
     </div>
   );
 }

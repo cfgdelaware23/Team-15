@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import "../styles/AddEvent.css";
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
+import Header from '../components/Header';
+import Header2 from '../components/Header2';
+import { useParams  } from 'react-router-dom';
 
 const options = [
     { value: '1', label: 'Entertainment' },
@@ -25,11 +28,12 @@ const AddEvent = () => {
     const [recurringDays, setRecurringDays] = useState("");
     const [zoom, setZoom] = useState("");
     const [interests, setInterests] = useState([]);
+
+    const userId = useParams().userId;
   
     const handleSelectChange = (selectedOptions) => {
       setInterests(selectedOptions.map(option => option.label))
     };
-
 
 
     const handleFormSubmit = (e) => {
@@ -39,15 +43,16 @@ const AddEvent = () => {
         console.log("Recurring:", isRecurring);
         console.log("Zoom Link:", zoom);
 
+
         let data = {
             title: title,
             date: date,
             recurring: isRecurring,
             recurringDays: isRecurring ? recurringDays : null,
             interests: interests,
-            zoom: zoom,
+            zoom: "https://duke.zoom.us/j/96991984393",
         }
-
+        console.log(data);
         const temp1 = collection(db, "tentative-events");
         try {
             addDoc(temp1, data);
@@ -61,12 +66,14 @@ const AddEvent = () => {
         setRecurringDays("");
         setZoom("");
         setInterests("");
+        window.location.href = `/decision/${userId}`;
 
 
     };
 
     return (
-
+        <div>
+        <Header />
         <div className='background'>
             <h1 id='title'>Please fill out the details below to add an event!</h1>
             <div className="addEventWrap">
@@ -114,6 +121,7 @@ const AddEvent = () => {
                 </div>  
 
             </div>
+        </div>
         </div>
     );
 };
