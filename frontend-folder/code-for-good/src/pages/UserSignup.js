@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useParams } from "react-router-dom";
 import Select from 'react-select';
 import '../styles/UserSignup.css';
 import { db } from '../firebase-config.js';
@@ -115,7 +116,6 @@ function UserSignup() {
           const from_name = "Code For Good";
           const toEmail = similarUser.email;
           const body = `You have similar interests to a new user, ${data.firstName} ${data.lastName}!`;
-          sendEmail(from_name, toEmail, body);
 
 
         const collectionRef = collection(db, 'users');
