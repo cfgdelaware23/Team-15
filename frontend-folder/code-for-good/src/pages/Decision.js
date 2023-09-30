@@ -26,7 +26,7 @@ margin: 10px;
 
 
 function Decision() {
-  const userId = useParams()
+  const userId = useParams().userId
   return (
     <div className="background" id="decision">
       <h1 id="title">Choose to join an event or add an event</h1>
