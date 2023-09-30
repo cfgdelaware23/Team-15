@@ -34,7 +34,6 @@ function App() {
           <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard" element={<EventDashboard />} />
-          <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/events/:eventTitle" element={<EventDetails />} />
           <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
