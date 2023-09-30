@@ -13,9 +13,7 @@ import Description from './pages/Description';
 function App() {
   return (
     <div className="App">
-       
-     
-  
+      
       <Header />
       <BrowserRouter>
         <Routes>
