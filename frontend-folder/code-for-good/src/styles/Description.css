@@ -52,6 +52,7 @@
     width: 900px;
     height: 700px;
     padding-left: 50px;
+    object-fit: cover;
 }
 
 #homePg {
