@@ -18,17 +18,11 @@ margin: 10px;
 
 &:hover {
   background-color: darkblue;
-<<<<<<< HEAD
  
 }
 
 &:hover {
   background-color: darkblue;
-=======
-
- 
-
->>>>>>> 3a8a52e278f21fc83e193464859c80afbca61d64
 }
 `;
 
