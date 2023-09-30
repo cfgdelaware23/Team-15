@@ -38,6 +38,8 @@ function UserSignup() {
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
+        window.location.href = "/Decision";
+        
     } catch (e) {
         console.log(e); 
     }
@@ -81,7 +83,7 @@ function UserSignup() {
         <div className='fieldContainerLong'>
           <label>
             Confirm Password:
-            <input type="password" name="confirmPassword" required onChange={handleInputChange} />
+            <input type="password" name="confirmPassword" required  />
           </label>
         </div>
         <div className='fieldContainerLong'>

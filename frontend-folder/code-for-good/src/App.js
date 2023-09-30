@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Decision from './pages/Decision'
 import AddEvent from './pages/AddEvent'
 import JoinEvent from './pages/JoinEvent'
+import SignIn from './pages/SignIn';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="/Decision" element={<Decision />} />
           <Route path="/AddEvent" element={<AddEvent />} />
           <Route path="/JoinEvent" element={<JoinEvent />} />
-            
+
+          <Route path="/SignIn" element={<SignIn />} /> 
         </Routes>
       </BrowserRouter>
 
