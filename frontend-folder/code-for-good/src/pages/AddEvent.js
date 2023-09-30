@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import styles from "../styles/AddEvent.css";
+import "../styles/AddEvent.css";
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
@@ -62,8 +62,8 @@ const AddEvent = () => {
 
         <div>
             <h1>Please fill out the details below to add an event!</h1>
-            <div className={styles.createEvent}>
-                <div className = "container">
+            <div >
+                <div className = "createEvent">
                 <h2>Create Event</h2>
                 <form onSubmit={handleFormSubmit}>
                     <label>

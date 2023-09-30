@@ -24,9 +24,6 @@ function Decision() {
         </button>
       </div>
     </div>
-
-    
-
   )
 }
 
