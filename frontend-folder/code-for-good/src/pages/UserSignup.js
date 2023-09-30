@@ -130,7 +130,7 @@ function UserSignup() {
             }
         })
 
-        window.location.href = `/Decision?id=${userId[0]}`;
+        window.location.href = `/Decision/${userId[0]}`;
         
     } } catch (e) {
         console.log(e); 
@@ -143,7 +143,7 @@ function UserSignup() {
       <div className="form-container">
       <h1>Create Account</h1>
       <form onSubmit={handleSubmit}>
-      <div className='fieldContainer'>
+        <div className='fieldContainer'>
           <label>
             First Name:
             <input type="text" onChange={(e) => setFirstName(e.target.value)} required />
@@ -192,7 +192,9 @@ function UserSignup() {
           onChange={handleSelectChange}
         />
             </div>
+      <div className="signupFlex">
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
+      </div>
       </form>
     </div>
     <div className='mt-1'>
