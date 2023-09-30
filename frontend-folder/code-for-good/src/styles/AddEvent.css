@@ -64,13 +64,19 @@ button[type="submit"]:hover {
 }
 
 
-.container {
-    background-color: #ccc;
-    width: 40%;
+.wrapperEvent {
+    background-color: #f9f9f9;
+    width: 500px;
     margin: 0 auto;
     padding: 20px; /* Add some white space */
     text-align: center; /* Center the content horizontally */
     margin-top: 20px; /* Add space at the top */
     margin-bottom: 20px; /* Add */
-    height: 100px;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#eventBg {
+    height: 700px;
 }
