@@ -33,7 +33,7 @@ let Event = require('../schema/EventSchema');
 
 router.route('/').get((req, res) => {
     Event.find()
-        .then(events => res.json(exercises))
+        .then(events => res.json(events))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 

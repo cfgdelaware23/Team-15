@@ -1,12 +1,37 @@
 import React, { useState } from 'react';
-import "../styles/SignIn.css";
+import "../styles/UserSignIn.css";
 
-function SignIn() {
+import { db } from '../firebase-config.js';
+import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+
+function UserSignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleClick = () => {
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        const collectionRef = collection(db, 'users');
+        const querySnapshot = await getDocs(collectionRef);
+
+        const userId = [];
+
+        querySnapshot.forEach((doc) => {
+            const documentData = doc.data();
+
+            if (documentData.email === email && documentData.password === password) {
+                userId.push(doc.id);
+            }
+        })
+        if (userId.length == 0) {
+            console.error('User not found');
+        }
+        else {
+            window.location.href = `/Decision?id=${userId[0]}`;
+        }
+
+        console.log(userId);
 
     };
 
@@ -33,4 +58,4 @@ function SignIn() {
     </div>;
 }
 
-export default SignIn;
+export default UserSignIn;

@@ -3,7 +3,7 @@ import Select from 'react-select';
 import '../styles/UserSignup.css';
 
 import { db } from '../firebase-config.js';
-import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
+import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 
 const options = [
   { value: '1', label: 'Entertainment' },
@@ -33,12 +33,26 @@ function UserSignup() {
       phoneNumber: phoneNumber,
       password: password,
       interests: interests,
+      admin: false,
     }
 
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
-        window.location.href = "/Decision";
+
+        const collectionRef = collection(db, 'users');
+        const querySnapshot = await getDocs(collectionRef);
+
+        const userId = [];
+        querySnapshot.forEach((doc) => {
+            const documentData = doc.data();
+
+            if (documentData.email === email && documentData.password === password) {
+                userId.push(doc.id);
+            }
+        })
+
+        window.location.href = `/Decision?id=${userId[0]}`;
         
     } catch (e) {
         console.log(e); 
@@ -83,7 +97,7 @@ function UserSignup() {
         <div className='fieldContainerLong'>
           <label>
             Confirm Password:
-            <input type="password" name="confirmPassword" required  />
+            <input type="password" name="confirmPassword" required/>
           </label>
         </div>
         <div className='fieldContainerLong'>
