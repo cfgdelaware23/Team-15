@@ -21,6 +21,11 @@ const events = express.Router();
 //     Response.status(201).json("New user created");
 // })
 
+events.post("/test", async (req, res) => {
+    console.log("test");
+    res.status(201);
+})
+
 // export default events;
 
 const router = require('express').Router();
