@@ -1,12 +1,31 @@
 import React, { useState } from 'react';
 import "../styles/UserSignIn.css";
 
+import { db } from '../firebase-config.js';
+import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+
 function UserSignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleClick = () => {
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        const collectionRef = collection(db, 'users');
+        const querySnapshot = await getDocs(collectionRef);
+
+        const userId = [];
+
+        querySnapshot.forEach((doc) => {
+            const documentData = doc.data();
+
+            if (documentData.email === email && documentData.password === password) {
+                userId.push(doc.id);
+            }
+        })
+
+        console.log(userId);
 
     };
 
