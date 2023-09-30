@@ -49,7 +49,7 @@ const EventDetails = () => {
       <article>
         <h2>{eventData.title}</h2>
         <p>Date is on {eventData.date}</p>
-        <p>This event occurs every {eventData.recurring} days</p>
+        <p>This event occurs every {eventData.recurringDays} days</p>
         <p>Categories: {eventData.interests.join(", ")}</p>
         <p>Zoom Link: {eventData.zoom}</p>
       </article>
