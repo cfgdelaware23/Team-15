@@ -30,13 +30,6 @@ const AdminVerifyDash = () => {
 
   return (
     <div className="eventDash">
-      {tentEventData.map((event) => (
-        <div className="event-preview" key={event.title}>
-          <Link to={`/tentEvents/${event.title}`}>
-            <h2>{event.title}</h2>
-          </Link>
-        </div>
-      ))}
        <table>
         <thead>
           <tr>

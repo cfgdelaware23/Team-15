@@ -33,7 +33,7 @@ function App() {
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard/:userId" element={<EventDashboard />} />
           <Route path="/events/:eventTitle" element={<EventDetails />} />
-          <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
+          <Route path="/tentEventDashboard/:userId" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
         </Routes>
       </BrowserRouter>
