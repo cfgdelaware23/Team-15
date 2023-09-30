@@ -35,7 +35,7 @@ const sendEmail = (fromEmail, toEmail, subject, body) => {
 
 
 
-// Calculate Jaccard similarity coefficient
+// Calculate Jaccard similarity coefficient in order to find the most similar user based on interests
 const jaccardSimilarity = (a, b) => {
   const intersection = a.filter(value => b.includes(value)).length;
   const union = new Set([...a, ...b]).size;
@@ -43,21 +43,21 @@ const jaccardSimilarity = (a, b) => {
 };
 
 
-
+// Find the most similar user based on interests
 const findMostSimilarUser = async (currentUserInterests, currentUserEmail) => {
   const usersRef = collection(db, "users");
   const allUsers = await getDocs(usersRef);
-
+  // console.log(allUsers);
   let maxSimilarity = 0;
   let mostSimilarUser = null;
-
+  // console.log(currentUserInterests);
   allUsers.forEach((doc) => {
       const userData = doc.data();
 
       // Exclude the current user from comparison
       if (userData.email !== currentUserEmail && userData.interests) {
           const similarity = jaccardSimilarity(currentUserInterests, userData.interests);
-          
+          // console.log(similarity);
           if (similarity > maxSimilarity) {
               maxSimilarity = similarity;
               mostSimilarUser = userData;
@@ -101,10 +101,8 @@ function UserSignup() {
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
-        // find similar user
+        // find similar user and send email
         const similarUser = await findMostSimilarUser(data.interests, data.email);
-
-
 
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
