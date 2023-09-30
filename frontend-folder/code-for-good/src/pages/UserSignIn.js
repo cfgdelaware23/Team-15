@@ -41,6 +41,7 @@ function UserSignIn() {
         <div className='signin-page'>
         <div className='signin-container'>
         <h1>Sign In</h1>
+        <div className="anotherWrapper">
         <div className="form-container">
             <form onSubmit={ handleClick}>
                 <div className="Signin">
@@ -63,10 +64,14 @@ function UserSignIn() {
                         <input type="password" onChange={(e) => setPassword(e.target.value)} required />
                     </label>
                 </div>
-            <button className="btn btn-primary mt-10" type="submit">Submit</button>
-            <Link className="create-account-link" to={"/UserSignup"}><strong>Create Account</strong></Link>
+            
+            <div className="wrapperSignIn">
+                <button className="btn btn-primary mt-10" type="submit">Submit</button>
+                <Link className="create-account-link" to={"/UserSignup"}><strong>Create Account</strong></Link>
+            </div>
             <div>{error}</div>
         </form>
+        </div>
         </div>
     </div>
     </div>
