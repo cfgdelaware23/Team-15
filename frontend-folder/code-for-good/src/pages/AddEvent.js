@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import styles from "../styles/AddEvent.css";
+import "../styles/AddEvent.css";
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
@@ -9,6 +9,13 @@ const options = [
     { value: '1', label: 'Entertainment' },
     { value: '2', label: 'Sports' },
     { value: '3', label: 'Educational' },
+    { value: '4', label: 'Cooking' },
+    { value: '5', label: 'Music'},
+    { value: '6', label: 'Business'},
+    { value: '7', label: 'Politics'},
+    { value: '8', label: 'News'},
+    { value: '9', label: 'Board Games'},
+    { value: '10', label: 'Literature'}
 ];
 
 const AddEvent = () => {
@@ -60,10 +67,10 @@ const AddEvent = () => {
 
     return (
 
-        <div>
-            <h1>Please fill out the details below to add an event!</h1>
-            <div className={styles.createEvent}>
-                <div className = "container">
+        <div className='background'>
+            <h1 id='title'>Please fill out the details below to add an event!</h1>
+            <div className="addEventWrap">
+                <div className = "createEvent">
                 <h2>Create Event</h2>
                 <form onSubmit={handleFormSubmit}>
                     <label>
@@ -83,7 +90,9 @@ const AddEvent = () => {
                     <br />
                     {isRecurring && (
                         <label>
-                            Recurring after how many days:
+
+                            Reoccurs after how many days? (Enter a number):
+
                             <input type="number" value={recurringDays} onChange={(e) => setRecurringDays(e.target.value)} />
                         </label>
                     )}

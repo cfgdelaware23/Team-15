@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useParams } from "react-router-dom";
 import Select from 'react-select';
 import '../styles/UserSignup.css';
 import { db } from '../firebase-config.js';
@@ -6,30 +7,38 @@ import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore'
 import emailjs from 'emailjs-com';
 
 const options = [
-  { value: '1', label: 'Entertainment' },
-  { value: '2', label: 'Sports' },
-  { value: '3', label: 'Educational' },
+  { value: "1", label: "Entertainment" },
+  { value: "2", label: "Sports" },
+  { value: "3", label: "Educational" },
+  { value: "4", label: "Cooking" },
+  { value: "5", label: "Music" },
+  { value: "6", label: "Business" },
+  { value: "7", label: "Politics" },
+  { value: "8", label: "News" },
+  { value: "9", label: "Board Games" },
+  { value: "10", label: "Literature" },
 ];
 
 //email sender
-const sendEmail = (fromEmail, toEmail, subject, body) => {
+const sendEmail = (from_name, toEmail, subject, body) => {
   // Template parameters
-  const templateParams = {
-      from_name: fromEmail,
+    const templateParams = {
+      from_name: from_name,
       to_name: toEmail,
       message: body,
-  };
+    };
 
-  return emailjs.send('service_koh4h1e', 'template_gt1ckdt', templateParams)
-      .then((response) => {
-          console.log('Email sent successfully:', response.status, response.text);
-          return true;
-      })
-      .catch((error) => {
-          console.log('Failed to send the email:', error);
-          return false;
-      });
+    return emailjs.send('service_koh4h1e', 'template_0zr93pf', templateParams, 'p7NFUElMtjchq9ahb')
+        .then((response) => {
+            console.log('Email sent successfully:', response.status, response.text);
+            return true;
+        })
+        .catch((error) => {
+            console.log('Failed to send the email:', error);
+            return false;
+        });
 }
+
 
 
 
@@ -102,16 +111,12 @@ function UserSignup() {
         addDoc(temp1, data);
         
         const similarUser = await findMostSimilarUser(data.interests, data.email);
-        try{
-          sendEmail("akshat.chavan2022@gmail.com", similarUser.email,'You have a match! Check out your matches page to see who it is!')
-        } catch (e) {
-          console.log(e);
-        }
-        try{
-          sendEmail("akshat.chavan2022@gmail.com", data.email, "You have a match! Check out your matches page to see who it is!")
-        } catch (e) {
-          console.log(e);
-        }
+        if (similarUser && similarUser.email) {
+          const from_name = "Code For Good";
+          const toEmail = similarUser.email;
+          const body = `You have similar interests to a new user, ${data.firstName} ${data.lastName}!`;
+          sendEmail(from_name, toEmail, body);
+
 
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
@@ -127,7 +132,7 @@ function UserSignup() {
 
         window.location.href = `/Decision?id=${userId[0]}`;
         
-    } catch (e) {
+    } } catch (e) {
         console.log(e); 
     }
 

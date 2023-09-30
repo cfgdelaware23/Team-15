@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Home.css";
+import "../styles/AdminVerifyDash.css";
 import { Link } from "react-router-dom";
-
 import { db } from "../firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -31,13 +30,26 @@ const AdminVerifyDash = () => {
 
   return (
     <div className="eventDash">
+       <table>
+        <thead>
+          <tr>
+            <th className="categories">Categories</th>
+            <th className="title">Title</th>
+            <th className="date">Date</th>
+          </tr>
+        </thead>
+        <tbody>
       {tentEventData.map((event) => (
-        <div className="event-preview" key={event.title}>
-          <Link to={`/tentEvents/${event.title}`}>
-            <h2>{event.title}</h2>
-          </Link>
-        </div>
+        <tr key={event.id}>
+        <td>{event.interests.join(", ")}</td>
+        <td>
+          <Link to={`/tentEvents/${event.title}`}>{event.title}</Link>
+        </td>
+        <td>{event.date}</td>
+      </tr>
       ))}
+      </tbody>
+      </table>
     </div>
   );
 };

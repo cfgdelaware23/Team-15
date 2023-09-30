@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
+import styles from "../styles/AdminVerifyDetails.css";
 
 const AdminVerifyDetails = () => {
   const { tentTitle } = useParams();
@@ -43,15 +44,61 @@ const AdminVerifyDetails = () => {
     return <div>Event not found</div>;
   }
 
+  const handleApprove = async () => {
+    console.log("approved");
+    let data = {
+      title: tentEventData.title,
+      date: tentEventData.date,
+      recurring: tentEventData.recurring,
+      recurringDays: tentEventData.recurringDays,
+      interests: tentEventData.interests,
+      zoom: tentEventData.zoom,
+    };
+
+    const temp1 = collection(db, "events");
+    try {
+      // Add the document to the 'events' collection
+      await addDoc(temp1, data);
+
+      const collectionRef = collection(db, "tentative-events");
+      const querySnapshot = await getDocs(collectionRef);
+
+      const tentEventId = [];
+      querySnapshot.forEach((doc) => {
+        const documentData = doc.data();
+
+        if (documentData.title === tentEventData.title) {
+          tentEventId.push(doc.id);
+        }
+      });
+
+      // Check if a matching document was found
+      if (tentEventId.length > 0) {
+        // Delete the document from 'tentative-events'
+        await deleteDoc(doc(db, "tentative-events", tentEventId[0]));
+      } else {
+        console.log("No matching document found to delete.");
+      }
+
+      // Redirect only if the delete operation was successful
+      window.location.href = `/TentEventDashboard/${tentTitle}`;
+    } catch (e) {
+      console.error("Error:", e);
+      // Handle the error appropriately, e.g., show an error message to the user
+    }
+  };
+
   return (
     <div className="tentEventDetails">
       <article>
         <h2>{tentEventData.title}</h2>
         <p>Date is on {tentEventData.date}</p>
-        <p>This event occurs every {tentEventData.recurring} days</p>
+        <p>This event occurs every {tentEventData.recurringDays} days</p>
         <p>Categories: {tentEventData.interests.join(", ")}</p>
         <p>Zoom Link: {tentEventData.zoom}</p>
       </article>
+      <button onClick={() => {
+        handleApprove()}}>Approve</button>
     </div>
   );
 };
