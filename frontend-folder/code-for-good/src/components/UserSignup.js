@@ -39,6 +39,8 @@ function UserSignup() {
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
+        window.location.href = "/Decision";
+        
     } catch (e) {
         console.log(e); 
     }
