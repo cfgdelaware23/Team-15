@@ -32,13 +32,13 @@ function Decision() {
       <h1 id="title">Choose to join an event or add an event</h1>
       <div className="flexDecision">
         <button className="addEvent" onClick={() => {
-          window.location.href = "/AddEvent/$";
+          window.location.href = `/AddEvent/${userId}`;
         }}>
           Add Event 
         </button>
         <div id="vl"></div>
         <button className="addEvent" onClick={() => {
-          window.location.href = "/JoinEvent/${userId}"
+          window.location.href = `/JoinEvent/${userId}`
         }}>
           Join Event 
         </button>
