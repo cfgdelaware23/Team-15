@@ -1,5 +1,5 @@
 # Team-15
 
+#### Problem Statement: The ACB needs an efficient way to streamline their event scheduling and event participation processes. 
 
-This application is a product of the powerful MERN stack, meticulously designed to cater to the needs of the American Association of the Blind. At its core, our software provides an intuitive platform for seamless management and coordination of events. Specifically tailored for the administrators and volunteers of the association, our platform aims to simplify their tasks and enhance efficiency, ensuring that their invaluable efforts in assisting the visually impaired community remain unhindered.
- 
+#### Our Solution: We created a web application using React.js, Node.js, and Firebase to enable users to sign up / sign in and view a list of available, approved events, personalized to their interests. They also have the ability to suggest an event that they would like to host. Further, we developed an efficient way for admin to log in and take note of the suggested events that they need to approve as well as the list of available, approved events, personalized to their interests.  

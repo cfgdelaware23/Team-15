@@ -83,10 +83,14 @@ const AddEvent = () => {
                     <br />
                     {isRecurring && (
                         <label>
+<<<<<<< HEAD
+                            Recurring after how many days:
+=======
 
 
                             Reoccurs after how many days? (Enter a number):
 
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
                             <input type="number" value={recurringDays} onChange={(e) => setRecurringDays(e.target.value)} />
                         </label>
                     )}
