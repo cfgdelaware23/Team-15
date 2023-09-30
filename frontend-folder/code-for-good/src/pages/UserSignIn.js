@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/UserSignIn.css";
 
 import { db } from '../firebase-config.js';
@@ -36,7 +37,9 @@ function UserSignIn() {
 
     };
 
-    return <div id="formContainer">
+    return (
+        <div className='signin-page'>
+        <div className='signin-container'>
         <h1>Sign In</h1>
         <div className="form-container">
             <form onSubmit={ handleClick}>
@@ -54,11 +57,20 @@ function UserSignIn() {
                         </label>
                     </div>
                 </div>
-                <button className="btn btn-primary mt-10" type="submit">Submit</button>
-                <div>{error}</div>
-            </form>
+                <div className='fieldContainerLong'>
+                    <label>
+                        Password:
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} required />
+                    </label>
+                </div>
+            <button className="btn btn-primary mt-10" type="submit">Submit</button>
+            <Link className="create-account-link" to={"/UserSignup"}><strong>Create Account</strong></Link>
+            <div>{error}</div>
+        </form>
         </div>
-    </div>;
+    </div>
+    </div>
+  );
 }
 
 export default UserSignIn;

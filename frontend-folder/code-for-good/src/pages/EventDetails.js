@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
-import { doc, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 const EventDetails = () => {
-  const { id } = useParams();
-  const eventId = parseInt(id, 10);
+  const { eventTitle } = useParams();
+
   const [eventData, setEventData] = useState(null); // Use null instead of []
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const EventDetails = () => {
         eventDocSnapshot.forEach((doc) => {
             const documentData = doc.data();
 
-            if (documentData.id === eventId){
+            if (documentData.title === eventTitle){
                 setEventData(documentData)
             }
         })
@@ -32,7 +32,7 @@ const EventDetails = () => {
     };
 
     fetchData();
-  }, [eventId]); // Pass [eventId] as a dependency to re-run the effect when the ID changes
+  }, [eventTitle]); 
 
   if (loading) {
     // Render a loading state while data is being fetched
@@ -50,7 +50,7 @@ const EventDetails = () => {
         <h2>{eventData.title}</h2>
         <p>Date is on {eventData.date}</p>
         <p>This event occurs every {eventData.recurring} days</p>
-        <p>Categories: {eventData.category.join(", ")}</p>
+        <p>Categories: {eventData.interests.join(", ")}</p>
         <p>Zoom Link: {eventData.zoom}</p>
       </article>
     </div>
