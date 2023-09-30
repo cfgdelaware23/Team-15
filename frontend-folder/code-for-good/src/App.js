@@ -7,9 +7,8 @@ import Decision from './pages/Decision'
 import AddEvent from './pages/AddEvent'
 import JoinEvent from './pages/JoinEvent'
 import UserSignup from './pages/UserSignup'
-=======
+import UserSignIn from './pages/UserSignIn'
 import Description from './pages/Description';
->>>>>>> akshat-backend
 
 function App() {
   return (
