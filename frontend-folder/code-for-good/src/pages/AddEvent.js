@@ -63,6 +63,7 @@ const AddEvent = () => {
         <div>
             <h1>Please fill out the details below to add an event!</h1>
             <div className={styles.createEvent}>
+                <div className = "container">
                 <h2>Create Event</h2>
                 <form onSubmit={handleFormSubmit}>
                     <label>
@@ -83,7 +84,6 @@ const AddEvent = () => {
                     {isRecurring && (
                         <label>
 
-                            Recurring after how many days:
 
                             Reoccurs after how many days? (Enter a number):
 
@@ -105,6 +105,7 @@ const AddEvent = () => {
                     <br />
                     <button type="submit">Submit</button>
                 </form>
+                </div>  
 
             </div>
         </div>
