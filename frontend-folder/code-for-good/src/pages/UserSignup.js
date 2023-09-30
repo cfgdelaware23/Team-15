@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/UserSignup.css';
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> 2d87a451d129a5ccfeb42cf83306fa813335decf
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
@@ -80,6 +77,8 @@ function UserSignup() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [interests, setInterests] = useState([]);
+  const [attendees, setAttendees] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
 
   const handleSelectChange = (selectedOptions) => {
     setInterests(selectedOptions.map(option => option.label))
@@ -96,6 +95,8 @@ function UserSignup() {
       password: password,
       interests: interests,
       admin: false,
+      attendees: attendees,
+      volunteers: volunteers
     }
 
     const temp1 = collection(db, "users");
@@ -118,7 +119,7 @@ function UserSignup() {
             }
         })
 
-        window.location.href = `/Decision?id=${userId[0]}`;
+        window.location.href = `/Decision/${userId[0]}`;
         
     } catch (e) {
         console.log(e); 
