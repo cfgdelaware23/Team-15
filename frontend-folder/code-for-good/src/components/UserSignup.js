@@ -33,6 +33,7 @@ function UserSignup() {
       phoneNumber: phoneNumber,
       password: password,
       interests: interests,
+      admin: false,
     }
 
     const temp1 = collection(db, "users");
@@ -81,7 +82,7 @@ function UserSignup() {
         <div className='fieldContainerLong'>
           <label>
             Confirm Password:
-            <input type="password" name="confirmPassword" required onChange={handleInputChange} />
+            <input type="password" name="confirmPassword" required/>
           </label>
         </div>
         <div className='fieldContainerLong'>
