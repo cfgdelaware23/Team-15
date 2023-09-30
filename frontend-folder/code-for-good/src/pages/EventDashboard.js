@@ -115,7 +115,7 @@ return (
                 </td>
                 <td>{event.date}</td>*/}
                 <span onClick={() => {
-                  window.location.href = `/events/${event.title}`;
+                  window.location.href = `/events/${event.title}/${userId}`;
                 }}><Event title={event.title} categories={"Categories: " + event.interests.join(", ")} date={"Date: " + event.date} /></span>
               </tr>
             ))}
@@ -129,7 +129,7 @@ return (
                 </td>
                 <td>{event.date}</td>*/}
                 <span onClick={() => {
-                  window.location.href = `/events/${event.title}`;
+                  window.location.href = `/events/${event.title}/${userId}`;
                 }}><Event title={event.title} categories={"Categories: " + event.interests.join(", ")} date={"Date: " + event.date} /></span>
               </tr>
             ))}
