@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config.js";
+<<<<<<< HEAD
+import { collection, getDocs } from "firebase/firestore";
+=======
 import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
 import styles from "../styles/AdminVerifyDetails.css";
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
 
 const AdminVerifyDetails = () => {
   const { tentTitle } = useParams();
@@ -44,6 +48,8 @@ const AdminVerifyDetails = () => {
     return <div>Event not found</div>;
   }
 
+<<<<<<< HEAD
+=======
   const handleApprove = async () => {
     console.log("approved");
     let data = {
@@ -88,6 +94,7 @@ const AdminVerifyDetails = () => {
     }
   };
 
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
   return (
     <div className="tentEventDetails">
       <article>
@@ -97,8 +104,11 @@ const AdminVerifyDetails = () => {
         <p>Categories: {tentEventData.interests.join(", ")}</p>
         <p>Zoom Link: {tentEventData.zoom}</p>
       </article>
+<<<<<<< HEAD
+=======
       <button onClick={() => {
         handleApprove()}}>Approve</button>
+>>>>>>> 0172b830a01504f74f6ef52f20aaa77fa71c4a87
     </div>
   );
 };
