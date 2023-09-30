@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/UserSignup.css';
+
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 
@@ -10,7 +11,7 @@ const options = [
   { value: '3', label: 'Educational' },
 ];
 
-function UserSignup() {
+function AdminSignup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ function UserSignup() {
       phoneNumber: phoneNumber,
       password: password,
       interests: interests,
-      admin: false,
+      admin: true,
     }
 
     const temp1 = collection(db, "users");
@@ -120,4 +121,4 @@ function UserSignup() {
   );
 }
 
-export default UserSignup;
+export default AdminSignup;
