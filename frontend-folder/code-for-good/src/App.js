@@ -12,6 +12,9 @@ import UserSignIn from './pages/UserSignIn'
 import Description from './pages/Description';
 import EventDashboard from "./pages/EventDashboard";
 import EventDetails from "./pages/EventDetails";
+import AdminSignup from './pages/AdminSignup';
+import AdminVerifyDash from './pages/AdminVerifyDash';
+import AdminVerifyDetails from './pages/AdminVerifyDetails';
 
 function App() {
   return (
@@ -28,9 +31,12 @@ function App() {
           <Route path="/AddEvent" element={<AddEvent />} />
           <Route path="/JoinEvent" element={<JoinEvent />} />
           <Route path="/AdminHome" element={<AdminHome />} />
+          <Route path="/AdminSignup" element={<AdminSignup />} />
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard" element={<EventDashboard />} />
           <Route path="/events/:eventTitle" element={<EventDetails />} />
+          <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
+          <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
