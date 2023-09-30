@@ -1,0 +1,53 @@
+/* EventDetails.css */
+
+.eventDetails {
+  padding: 20px;
+}
+
+.eventDetails h2 {
+  margin-bottom: 20px;
+}
+
+.padding {
+  padding-top: 100px;
+}
+
+.details-container {
+  background-color: #f9f9f9; /* Blue background */
+  padding: 20px; /* Space around the table */
+  border-radius: 8px; /* Optional: for rounded corners */
+  margin-bottom: 20px; /* Space below the blue background */
+  width: 50%; /* Adjust width as needed */
+  margin: auto; /* Centering the container */
+}
+
+.details-table {
+  border-collapse: collapse;
+  width: 100%; /* This will now take 100% width of the .details-container */
+  background-color: #ffffff; /* White background for the table */
+}
+
+.details-table td {
+  border: 1px solid black;
+  padding: 4px;
+  text-align: left;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #008CBA;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #005f5f;
+}
+
+#eventDet {
+  height: 700px;
+}

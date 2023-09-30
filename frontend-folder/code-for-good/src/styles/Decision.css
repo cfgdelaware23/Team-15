@@ -29,7 +29,7 @@ h1 {
 }
 
 .addEvent {
-    height: 75px;
+    height: 200px;
     margin-top: 150px;
     background-color: #93C5CD;
     color: #fff;
@@ -41,4 +41,6 @@ h1 {
     cursor: pointer;
     padding: 10px 60px;
     border-radius: 5px;
+    width: 400px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
 }

@@ -1,0 +1,39 @@
+.aiChat {
+    width: 700px;
+    height: 700px;
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 30px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.questionTitle {
+    padding-bottom: 20px;
+}
+
+#aiChat {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inputcontainer {
+    padding-bottom: 20px;
+}
+
+.subansbutton {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.answer {
+    width: 600px;
+    background-color: #E4EBEE;
+    border-radius: 15px;
+    padding: 15px;
+}

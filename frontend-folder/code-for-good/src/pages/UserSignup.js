@@ -1,36 +1,45 @@
 import React, { useState } from 'react';
+import { Link, useParams } from "react-router-dom";
 import Select from 'react-select';
 import '../styles/UserSignup.css';
-import { Link } from "react-router-dom";
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
+import Header from '../components/Header';
 
 const options = [
-  { value: '1', label: 'Entertainment' },
-  { value: '2', label: 'Sports' },
-  { value: '3', label: 'Educational' },
+  { value: "1", label: "Entertainment" },
+  { value: "2", label: "Sports" },
+  { value: "3", label: "Educational" },
+  { value: "4", label: "Cooking" },
+  { value: "5", label: "Music" },
+  { value: "6", label: "Business" },
+  { value: "7", label: "Politics" },
+  { value: "8", label: "News" },
+  { value: "9", label: "Board Games" },
+  { value: "10", label: "Literature" },
 ];
 
 //email sender
-const sendEmail = (fromEmail, toEmail, subject, body) => {
+const sendEmail = (from_name, toEmail, subject, body) => {
   // Template parameters
-  const templateParams = {
-      from_name: fromEmail,
+    const templateParams = {
+      from_name: from_name,
       to_name: toEmail,
       message: body,
-  };
+    };
 
-  return emailjs.send('service_koh4h1e', 'template_gt1ckdt', templateParams)
-      .then((response) => {
-          console.log('Email sent successfully:', response.status, response.text);
-          return true;
-      })
-      .catch((error) => {
-          console.log('Failed to send the email:', error);
-          return false;
-      });
+    return emailjs.send('service_koh4h1e', 'template_0zr93pf', templateParams, 'p7NFUElMtjchq9ahb')
+        .then((response) => {
+            console.log('Email sent successfully:', response.status, response.text);
+            return true;
+        })
+        .catch((error) => {
+            console.log('Failed to send the email:', error);
+            return false;
+        });
 }
+
 
 
 
@@ -97,26 +106,15 @@ function UserSignup() {
       interests: interests,
       admin: false,
     }
+    
 
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
+        console.log("try statement");
         
-        const similarUser = await findMostSimilarUser(data.interests, data.email);
-        try{
-          sendEmail("akshat.chavan2022@gmail.com", similarUser.email,'You have a match! Check out your matches page to see who it is!')
-        } catch (e) {
-          console.log(e);
-        }
-        try{
-          sendEmail("akshat.chavan2022@gmail.com", data.email, "You have a match! Check out your matches page to see who it is!")
-        } catch (e) {
-          console.log(e);
-        }
-
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
-
         const userId = [];
         querySnapshot.forEach((doc) => {
             const documentData = doc.data();
@@ -126,20 +124,21 @@ function UserSignup() {
             }
         })
 
-        window.location.href = `/Decision?id=${userId[0]}`;
+        window.location.href = `/Decision/${userId[0]}`;
         
-    } catch (e) {
+     } catch (e) {
         console.log(e); 
     }
 
   };
 
   return (
+    <div><Header/>
     <div className='container'>
       <div className="form-container">
       <h1>Create Account</h1>
       <form onSubmit={handleSubmit}>
-      <div className='fieldContainer'>
+        <div className='fieldContainer'>
           <label>
             First Name:
             <input type="text" onChange={(e) => setFirstName(e.target.value)} required />
@@ -188,12 +187,15 @@ function UserSignup() {
           onChange={handleSelectChange}
         />
             </div>
-        <button className="btn btn-primary mt-10" type="submit">Create Account</button>
+      <div className="signupFlex">
+        <button className="btn btn-primary mt-10" type="submit" >Create Account</button>
+      </div>
       </form>
     </div>
     <div className='mt-1'>
           <p>Already a user? <Link to={"/UserSignIn"}><strong>Login here</strong></Link></p>
       </div>
+    </div>
     </div>
   );
 }

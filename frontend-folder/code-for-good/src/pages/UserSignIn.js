@@ -4,6 +4,7 @@ import "../styles/UserSignIn.css";
 
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+import Header from '../components/Header';
 
 function UserSignIn() {
     const [email, setEmail] = useState("");
@@ -17,12 +18,14 @@ function UserSignIn() {
         const querySnapshot = await getDocs(collectionRef);
 
         const userId = [];
+        let adminCheck = false;
 
         querySnapshot.forEach((doc) => {
             const documentData = doc.data();
 
             if (documentData.email === email && documentData.password === password) {
                 userId.push(doc.id);
+                adminCheck = documentData.admin;
             }
         })
         if (userId.length === 0) {
@@ -30,7 +33,12 @@ function UserSignIn() {
             setError("Wrong Password!");
         }
         else {
-            window.location.href = `/Decision?id=${userId[0]}`;
+            console.log(adminCheck);
+            if (adminCheck) {
+                window.location.href = `/AdminHome/${userId[0]}`;
+                return;
+            }
+            window.location.href = `/Decision/${userId[0]}`;
         }
 
         console.log(userId);
@@ -38,9 +46,11 @@ function UserSignIn() {
     };
 
     return (
+        <div>
+        <Header/>
         <div className='signin-page'>
         <div className='signin-container'>
-        <h1>Sign In</h1>
+        <h1 id="title">Sign In</h1>
         <div className="anotherWrapper">
         <div className="form-container">
             <form onSubmit={ handleClick}>
@@ -48,7 +58,7 @@ function UserSignIn() {
                     <div className='fieldContainerLong'>
                         <label>
                             Email:
-                            <input type="text" onChange={(e) => setEmail(e.target.value)} required />
+                            <input type="email" onChange={(e) => setEmail(e.target.value)} required />
                         </label>
                     </div>
                     <div className='fieldContainerLong'>
@@ -67,6 +77,7 @@ function UserSignIn() {
         </form>
         </div>
         </div>
+    </div>
     </div>
     </div>
   );

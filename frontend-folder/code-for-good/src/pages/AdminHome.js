@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import Header2 from '../components/Header2'
 
 const Button = styled.button`
 background-color: lightblue;
@@ -19,25 +20,43 @@ margin: 10px;
 `;
 
 function AdminHome() {
+  const userId = useParams().userId;
   return (
     <div>
-      Welcome Admin!
-      <div>
-        <Link to="/Decision">
-          <Button>
-            Add/Join Events
-          </Button>
-
-        </Link>
-        </div>
-        <div>
-        <Button>
-            Approve/Disprove Events
-        </Button>
+      <Header2 />
+      <div className="background" id="decision">
+        <h1 id="title">Choose to join an event or add an event</h1>
+        <div className="flexDecision">
+          <button
+            className="addEvent"
+            onClick={() => {
+              window.location.href = `/AddEvent/${userId}`;
+            }}
+          >
+            Add Event
+          </button>
+          <div id="vl"></div>
+          <button
+            className="addEvent"
+            onClick={() => {
+              window.location.href = `/EventDashboard/${userId}`;
+            }}
+          >
+            Join Event
+          </button>
+          <div id="vl"></div>
+          <button
+            className="addEvent"
+            onClick={() => {
+              window.location.href = `/tentEventDashboard/${userId}`;
+            }}
+          >
+            Verify Events Dashboard
+          </button>
         </div>
       </div>
-
-  )
+    </div>
+  );
 }
 
 export default AdminHome
