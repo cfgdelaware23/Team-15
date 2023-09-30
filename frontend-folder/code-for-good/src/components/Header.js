@@ -8,13 +8,16 @@ import '../styles/Header.css';
 const Header = () => {
   return (
       <header className="header-container">
+        
           <div className="logo-container">
+            <Link className='nav-link' to="/">
               <img src={logo} alt="Website Logo" />
+            </Link>
           </div>
           <div className="button-container">
               <Link className="nav-link mx-4" to="/UserSignup">
                   <button type="button" className="signup-button">
-                      Sign up
+                      Sign Up
                   </button>
               </Link>
           </div>
