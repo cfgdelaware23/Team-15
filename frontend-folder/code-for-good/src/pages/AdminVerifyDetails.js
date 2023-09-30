@@ -44,39 +44,48 @@ const AdminVerifyDetails = () => {
   }
 
   const handleApprove = async () => {
-    console.log("approved")
+    console.log("approved");
     let data = {
       title: tentEventData.title,
       date: tentEventData.date,
       recurring: tentEventData.recurring,
       recurringDays: tentEventData.recurringDays,
       interests: tentEventData.interests,
-      zoom: tentEventData.zoom
+      zoom: tentEventData.zoom,
     };
 
     const temp1 = collection(db, "events");
-    try{
-        addDoc(temp1, data);
+    try {
+      // Add the document to the 'events' collection
+      await addDoc(temp1, data);
 
-        const collectionRef = collection(db, 'tentative-events');
-        const querySnapshot = await getDocs(collectionRef);
-        
-        const tentEventId = []
-        querySnapshot.forEach((doc) => {
-            const documentData = doc.data();
+      const collectionRef = collection(db, "tentative-events");
+      const querySnapshot = await getDocs(collectionRef);
 
-            if (documentData.title === tentEventData.title){
-                tentEventId.push(doc.id);
-            }
-        })
+      const tentEventId = [];
+      querySnapshot.forEach((doc) => {
+        const documentData = doc.data();
 
-        deleteDoc(doc(db, 'tentative-events', tentEventId[0]))
-        window.location.href = `/TentEventDashboard`;
+        if (documentData.title === tentEventData.title) {
+          tentEventId.push(doc.id);
+        }
+      });
 
-    } catch(e) {
-        console.log(e);
+      // Check if a matching document was found
+      if (tentEventId.length > 0) {
+        // Delete the document from 'tentative-events'
+        await deleteDoc(doc(db, "tentative-events", tentEventId[0]));
+      } else {
+        console.log("No matching document found to delete.");
+      }
+
+      // Redirect only if the delete operation was successful
+      window.location.href = `/TentEventDashboard`;
+    } catch (e) {
+      console.error("Error:", e);
+      // Handle the error appropriately, e.g., show an error message to the user
     }
-  }
+  };
 
   return (
     <div className="tentEventDetails">
