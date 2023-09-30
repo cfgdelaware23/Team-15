@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles/AdminVerifyDash.css";
-import { Link } from "react-router-dom";
+import { Link , useParams} from "react-router-dom";
 import { db } from "../firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
 import Header2 from "../components/Header2";
 
 const AdminVerifyDash = () => {
+  const userId = useParams().userId
   const [tentEventData, setTentEventData] = useState([]); // Use state to store event data
 
   useEffect(() => {
@@ -52,6 +53,12 @@ const AdminVerifyDash = () => {
       ))}
       </tbody>
       </table>
+
+      <button className="goback" onClick={() => {
+          window.location.href = `/AdminHome/${userId}`
+        }}>
+          Back
+      </button>
     </div>
   );
 };
