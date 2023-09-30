@@ -8,6 +8,7 @@ import AddEvent from './pages/AddEvent'
 import JoinEvent from './pages/JoinEvent'
 import UserSignup from './pages/UserSignup'
 import UserSignIn from './pages/SignIn';
+import Description from './pages/Description'
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Description />} />
           <Route path="/UserSignUp" element={<UserSignup />} />
           <Route path="/UserSignIn" element={<UserSignIn />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/Decision" element={<Decision />} />
           <Route path="/AddEvent" element={<AddEvent />} />
           <Route path="/JoinEvent" element={<JoinEvent />} />
