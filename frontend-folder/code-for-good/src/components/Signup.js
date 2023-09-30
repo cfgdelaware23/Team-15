@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/Signup.css';
 
+import { db } from '../firebase-config.js';
+import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
+
 const options = [
   { value: '1', label: 'Entertainment' },
   { value: '2', label: 'Sports' },
@@ -9,45 +12,38 @@ const options = [
 ];
 
 function Signup() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    interests: [],
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [interests, setInterests] = useState([]);
 
   const handleSelectChange = (selectedOptions) => {
-    setFormData({
-      ...formData,
-      interests: selectedOptions.map(option => option.label),
-    });
+    setInterests(selectedOptions.map(option => option.label))
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:5000/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      const result = await response.text();
-      console.log(result);
-    } catch (error) {
-      console.error('Error:', error);
+
+    let data = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+      interests: interests,
     }
+
+    const temp1 = collection(db, "users");
+    try {
+        addDoc(temp1, data);
+    } catch (e) {
+        console.log(e); 
+    }
+
+    console.log(firstName);
+
   };
 
   return (
@@ -57,31 +53,31 @@ function Signup() {
       <div className='fieldContainer'>
           <label>
             First Name:
-            <input type="text" required />
+            <input type="text" onChange={(e) => setFirstName(e.target.value)} required />
           </label>
         </div>
         <div className='fieldContainer'>
           <label>
             Last Name:
-            <input type="text" required />
+            <input type="text" onChange={(e) => setLastName(e.target.value)} required />
           </label>
         </div>
         <div className='fieldContainer'>
           <label>
             Email:
-            <input type="email"  required />
+            <input type="email" onChange={(e) => setEmail(e.target.value)} required />
           </label>
         </div>
         <div className='fieldContainerLong'>
           <label>
             Phone Number:
-            <input type="text" required />
+            <input type="text" onChange={(e) => setPhoneNumber(e.target.value)} required />
           </label>
         </div>
         <div className='fieldContainerLong'>
           <label>
             Password:
-            <input type="password" required />
+            <input type="password" onChange={(e) => setPassword(e.target.value)} required />
           </label>
         </div>
         <div className='fieldContainerLong'>
