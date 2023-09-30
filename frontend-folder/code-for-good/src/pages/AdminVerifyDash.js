@@ -19,7 +19,7 @@ const AdminVerifyDash = () => {
           id: doc.id,
           ...doc.data(),
         }));
-
+        console.log(tentEventData);
         setTentEventData(tentEventData); // Update state with fetched data
       } catch (error) {
         console.error("Error fetching data:", error);

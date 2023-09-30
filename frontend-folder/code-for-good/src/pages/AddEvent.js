@@ -3,7 +3,7 @@ import Select from 'react-select';
 import "../styles/AddEvent.css";
 
 import { db } from '../firebase-config.js';
-import { doc, updateDoc, collection, addDoc } from 'firebase/firestore';
+import { doc, updateDoc, collection, addDoc, getDocs, getDoc } from 'firebase/firestore';
 import Header from '../components/Header';
 import Header2 from '../components/Header2';
 import { useParams  } from 'react-router-dom';
@@ -36,8 +36,13 @@ const AddEvent = () => {
     };
 
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
+
+        if (interests.length == 0) {
+            alert("please select 1 option");
+            return;
+        }
         console.log("Title:", title);
         console.log("Date:", date);
         console.log("Recurring:", isRecurring);
@@ -66,7 +71,27 @@ const AddEvent = () => {
         setRecurringDays("");
         setZoom("");
         setInterests("");
-        window.location.href = `/decision/${userId}`;
+
+        const documentRef = doc(db, "users", userId);
+        getDoc(documentRef)
+          .then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+              // Document exists, you can access its data using docSnapshot.data()
+              const documentData = docSnapshot.data();
+              
+              if (documentData.admin == true) {
+                window.location.href = `/AdminHome/${userId}`;
+              }
+              else {
+                window.location.href = `/decision/${userId}`;
+              }
+            } else {
+              console.log("Document does not exist.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching document:", error);
+        });
 
 
     };
