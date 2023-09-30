@@ -51,7 +51,7 @@ const EventDetails = () => {
         <p>Date is on {eventData.date}</p>
         <p>This event occurs every {eventData.recurring} days</p>
         <p>Categories: {eventData.category.join(", ")}</p>
-        <p>Zoom Link: {eventData.zoomLink}</p>
+        <p>Zoom Link: {eventData.zoom}</p>
       </article>
     </div>
   );
