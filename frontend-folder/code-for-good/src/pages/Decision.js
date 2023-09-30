@@ -18,9 +18,7 @@ margin: 10px;
 
 &:hover {
   background-color: darkblue;
-
  
-
 }
 `;
 
@@ -39,7 +37,7 @@ function Decision() {
         </button>
         <div id="vl"></div>
         <button className="addEvent" onClick={() => {
-          window.location.href = "/JoinEvent"
+          window.location.href = "/eventdashboard"
         }}>
           Join Event 
         </button>
