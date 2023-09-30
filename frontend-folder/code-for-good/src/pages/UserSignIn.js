@@ -58,13 +58,7 @@ function UserSignIn() {
                         </label>
                     </div>
                 </div>
-                <div className='fieldContainerLong'>
-                    <label>
-                        Password:
-                        <input type="password" onChange={(e) => setPassword(e.target.value)} required />
-                    </label>
-                </div>
-            
+                <br></br>
             <div className="wrapperSignIn">
                 <button className="btn btn-primary mt-10" type="submit">Submit</button>
                 <Link className="create-account-link" to={"/UserSignup"}><strong>Create Account</strong></Link>
