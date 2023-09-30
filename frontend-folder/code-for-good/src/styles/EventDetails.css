@@ -8,8 +8,12 @@
   margin-bottom: 20px;
 }
 
+.padding {
+  padding-top: 100px;
+}
+
 .details-container {
-  background-color: #E4EBEE; /* Blue background */
+  background-color: #f9f9f9; /* Blue background */
   padding: 20px; /* Space around the table */
   border-radius: 8px; /* Optional: for rounded corners */
   margin-bottom: 20px; /* Space below the blue background */
@@ -42,4 +46,8 @@ button {
 
 button:hover {
   background-color: #005f5f;
+}
+
+#eventDet {
+  height: 700px;
 }
