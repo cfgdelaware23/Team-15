@@ -5,6 +5,8 @@ import { db } from '../firebase-config.js';
 import { doc, collection, getDocs, getDoc } from 'firebase/firestore'
 import "../styles/EventDashboard.css";
 import Header2 from "../components/Header2"
+import Event from "../components/Event";
+
 
 
 const EventDashboard = () => {
@@ -74,31 +76,63 @@ const EventDashboard = () => {
   );
 
 return (
-  <div>
+    <div className="background" id="dashboard">
     <Header2 />
-    <div className="eventDash">
-      <table>
+      <table className="table">
         <thead>
-          <tr>
+          {/*<tr>
             <th className="categories">Categories</th>
             <th className="title">Title</th>
             <th className="date">Date</th>
-          </tr>
+          </tr>*/}
         </thead>
-        <tbody>
-          {filteredEvents.map((event) => (
-            <tr key={event.id}>
-              <td>{event.interests.join(", ")}</td>
-              <td>
-                <Link to={`/events/${event.title}`}>{event.title}</Link>
-              </td>
-              <td>{event.date}</td>
-            </tr>
-          ))}
-        </tbody>
+        <div className="flexDashboard">
+          <tbody className="table">
+            {filteredEvents.slice(0,3).map((event, index) => (
+              <tr key={event.id}>
+                {/*<td>{event.interests.join(", ")}</td>
+                <td>
+                  <Link to={`/events/${event.title}`}>{event.title}</Link>
+                </td>
+                <td>{event.date}</td>*/}
+                <span onClick={() => {
+                  window.location.href = `/events/${event.title}`;
+                }}><Event title={event.title} categories={"Categories: " + event.interests.join(", ")} date={"Date: " + event.date} /></span>
+              </tr>
+            ))}
+          </tbody>
+          <tbody className="table">
+            {filteredEvents.slice(3,6).map((event, index) => (
+              <tr key={event.id}>
+                {/*<td>{event.interests.join(", ")}</td>
+                <td>
+                  <Link to={`/events/${event.title}`}>{event.title}</Link>
+                </td>
+                <td>{event.date}</td>*/}
+                <span onClick={() => {
+                  window.location.href = `/events/${event.title}`;
+                }}><Event title={event.title} categories={"Categories: " + event.interests.join(", ")} date={"Date: " + event.date} /></span>
+              </tr>
+            ))}
+          </tbody>
+          <tbody className="table">
+            {filteredEvents.slice(6, 9).map((event, index) => (
+              <tr key={event.id}>
+                {/*<td>{event.interests.join(", ")}</td>
+                <td>
+                  <Link to={`/events/${event.title}`}>{event.title}</Link>
+                </td>
+                <td>{event.date}</td>*/}
+                <span onClick={() => {
+                  window.location.href = `/events/${event.title}`;
+                }}><Event title={event.title} categories={"Categories: " + event.interests.join(", ")} date={"Date: " + event.date} /></span>
+              </tr>
+            ))}
+          </tbody>
+        </div>
       </table>
     </div>
-  </div>
+  
 );
 };
 

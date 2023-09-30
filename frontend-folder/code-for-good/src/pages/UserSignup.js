@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useParams } from "react-router-dom";
 import Select from 'react-select';
 import '../styles/UserSignup.css';
 import { db } from '../firebase-config.js';
@@ -6,36 +7,44 @@ import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore'
 import emailjs from 'emailjs-com';
 
 const options = [
-  { value: '1', label: 'Entertainment' },
-  { value: '2', label: 'Sports' },
-  { value: '3', label: 'Educational' },
+  { value: "1", label: "Entertainment" },
+  { value: "2", label: "Sports" },
+  { value: "3", label: "Educational" },
+  { value: "4", label: "Cooking" },
+  { value: "5", label: "Music" },
+  { value: "6", label: "Business" },
+  { value: "7", label: "Politics" },
+  { value: "8", label: "News" },
+  { value: "9", label: "Board Games" },
+  { value: "10", label: "Literature" },
 ];
 
 //email sender
-const sendEmail = (fromEmail, toEmail, subject, body) => {
+const sendEmail = (from_name, toEmail, subject, body) => {
   // Template parameters
-  const templateParams = {
-      from_name: fromEmail,
+    const templateParams = {
+      from_name: from_name,
       to_name: toEmail,
       message: body,
-  };
+    };
 
-  return emailjs.send('service_koh4h1e', 'template_gt1ckdt', templateParams)
-      .then((response) => {
-          console.log('Email sent successfully:', response.status, response.text);
-          return true;
-      })
-      .catch((error) => {
-          console.log('Failed to send the email:', error);
-          return false;
-      });
+    return emailjs.send('service_koh4h1e', 'template_0zr93pf', templateParams, 'p7NFUElMtjchq9ahb')
+        .then((response) => {
+            console.log('Email sent successfully:', response.status, response.text);
+            return true;
+        })
+        .catch((error) => {
+            console.log('Failed to send the email:', error);
+            return false;
+        });
 }
 
 
 
 
 
-// Calculate Jaccard similarity coefficient in order to find the most similar user based on interests
+
+// Calculate Jaccard similarity coefficient
 const jaccardSimilarity = (a, b) => {
   const intersection = a.filter(value => b.includes(value)).length;
   const union = new Set([...a, ...b]).size;
@@ -43,21 +52,21 @@ const jaccardSimilarity = (a, b) => {
 };
 
 
-// Find the most similar user based on interests
+
 const findMostSimilarUser = async (currentUserInterests, currentUserEmail) => {
   const usersRef = collection(db, "users");
   const allUsers = await getDocs(usersRef);
-  // console.log(allUsers);
+
   let maxSimilarity = 0;
   let mostSimilarUser = null;
-  // console.log(currentUserInterests);
+
   allUsers.forEach((doc) => {
       const userData = doc.data();
 
       // Exclude the current user from comparison
       if (userData.email !== currentUserEmail && userData.interests) {
           const similarity = jaccardSimilarity(currentUserInterests, userData.interests);
-          // console.log(similarity);
+          
           if (similarity > maxSimilarity) {
               maxSimilarity = similarity;
               mostSimilarUser = userData;
@@ -69,6 +78,9 @@ const findMostSimilarUser = async (currentUserInterests, currentUserEmail) => {
 }
 
 
+
+
+
 function UserSignup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -76,8 +88,6 @@ function UserSignup() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [interests, setInterests] = useState([]);
-  const [attendees, setAttendees] = useState([]);
-  const [volunteers, setVolunteers] = useState([]);
 
   const handleSelectChange = (selectedOptions) => {
     setInterests(selectedOptions.map(option => option.label))
@@ -94,15 +104,19 @@ function UserSignup() {
       password: password,
       interests: interests,
       admin: false,
-      attendees: attendees,
-      volunteers: volunteers
     }
 
     const temp1 = collection(db, "users");
     try {
         addDoc(temp1, data);
-        // find similar user and send email
+        
         const similarUser = await findMostSimilarUser(data.interests, data.email);
+        if (similarUser && similarUser.email) {
+          const from_name = "Code For Good";
+          const toEmail = similarUser.email;
+          const body = `You have similar interests to a new user, ${data.firstName} ${data.lastName}!`;
+          sendEmail(from_name, toEmail, body);
+
 
         const collectionRef = collection(db, 'users');
         const querySnapshot = await getDocs(collectionRef);
@@ -116,9 +130,9 @@ function UserSignup() {
             }
         })
 
-        window.location.href = `/Decision/${userId[0]}`;
+        window.location.href = `/Decision?id=${userId[0]}`;
         
-    } catch (e) {
+    } } catch (e) {
         console.log(e); 
     }
 
@@ -181,6 +195,9 @@ function UserSignup() {
         <button className="btn btn-primary mt-10" type="submit">Create Account</button>
       </form>
     </div>
+    <div className='mt-1'>
+          <p>Already a user? <Link to={"/UserSignIn"}><strong>Login here</strong></Link></p>
+      </div>
     </div>
   );
 }

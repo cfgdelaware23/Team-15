@@ -30,37 +30,28 @@ const AdminVerifyDash = () => {
   }, []); // Pass an empty dependency array to run the effect only once
 
   return (
-    <div>
-      <Header2 />
-      <div className="eventDash">
-        {tentEventData.map((event) => (
-          <div className="event-preview" key={event.title}>
-            <Link to={`/tentEvents/${event.title}`}>
-              <h2>{event.title}</h2>
-            </Link>
-          </div>
-        ))}
-        <table>
-          <thead>
-            <tr>
-              <th className="categories">Categories</th>
-              <th className="title">Title</th>
-              <th className="date">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tentEventData.map((event) => (
-              <tr key={event.id}>
-                <td>{event.interests.join(", ")}</td>
-                <td>
-                  <Link to={`/tentEvents/${event.title}`}>{event.title}</Link>
-                </td>
-                <td>{event.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="eventDash">
+      <Header2></Header2>
+       <table>
+        <thead>
+          <tr>
+            <th className="categories">Categories</th>
+            <th className="title">Title</th>
+            <th className="date">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+      {tentEventData.map((event) => (
+        <tr key={event.id}>
+        <td>{event.interests.join(", ")}</td>
+        <td>
+          <Link to={`/tentEvents/${event.title}`}>{event.title}</Link>
+        </td>
+        <td>{event.date}</td>
+      </tr>
+      ))}
+      </tbody>
+      </table>
     </div>
   );
 };

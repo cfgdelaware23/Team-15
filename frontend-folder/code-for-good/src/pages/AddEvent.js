@@ -67,9 +67,9 @@ const AddEvent = () => {
 
     return (
 
-        <div>
-            <h1>Please fill out the details below to add an event!</h1>
-            <div >
+        <div className='background'>
+            <h1 id='title'>Please fill out the details below to add an event!</h1>
+            <div className="addEventWrap">
                 <div className = "createEvent">
                 <h2>Create Event</h2>
                 <form onSubmit={handleFormSubmit}>

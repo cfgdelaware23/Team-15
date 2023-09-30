@@ -15,6 +15,9 @@ import AdminSignup from './pages/AdminSignup';
 import AdminVerifyDash from './pages/AdminVerifyDash';
 import AdminVerifyDetails from './pages/AdminVerifyDetails';
 import Logout from './pages/Logout';
+import AIChat from './pages/AIChat.js';
+
+
 
 function App() {
   return (
@@ -34,9 +37,11 @@ function App() {
           <Route path="/UserSignup" element={<UserSignup />} />
           <Route path="/EventDashboard/:userId" element={<EventDashboard />} />
           <Route path="/events/:eventTitle" element={<EventDetails />} />
-          <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
+          <Route path="/tentEventDashboard/:userId" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
           <Route path="/Logout" element={<Logout />} />
+          <Route path="/AiChat" element={<AIChat />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

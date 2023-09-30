@@ -82,7 +82,7 @@ const AdminVerifyDetails = () => {
       }
 
       // Redirect only if the delete operation was successful
-      window.location.href = `/TentEventDashboard`;
+      window.location.href = `/TentEventDashboard/${tentTitle}`;
     } catch (e) {
       console.error("Error:", e);
       // Handle the error appropriately, e.g., show an error message to the user
@@ -90,25 +90,22 @@ const AdminVerifyDetails = () => {
   };
 
   return (
-    <div>
-        <Header2 />
-
-      <div className="tentEventDetails">
-        <article>
-          <h2>{tentEventData.title}</h2>
-          <p>Date is on {tentEventData.date}</p>
-          <p>This event occurs every {tentEventData.recurring} days</p>
-          <p>Categories: {tentEventData.interests.join(", ")}</p>
-          <p>Zoom Link: {tentEventData.zoom}</p>
-        </article>
-        <button
-          onClick={() => {
-            handleApprove();
-          }}
-        >
-          Approve
-        </button>
-      </div>
+    <div className="tentEventDetails">
+      <Header2 />
+      <article>
+        <h2>{tentEventData.title}</h2>
+        <p>Date is on {tentEventData.date}</p>
+        <p>This event occurs every {tentEventData.recurringDays} days</p>
+        <p>Categories: {tentEventData.interests.join(", ")}</p>
+        <p>Zoom Link: {tentEventData.zoom}</p>
+      </article>
+      <button
+        onClick={() => {
+          handleApprove();
+        }}
+      >
+        Approve
+      </button>
     </div>
   );
 };
