@@ -12,6 +12,7 @@ const AddEvent = () => {
     const [zoom, setZoom] = useState("");
 
 
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         console.log("Title:", title);
@@ -23,6 +24,7 @@ const AddEvent = () => {
             title: title,
             date: date,
             recurring: isRecurring,
+            recurringDays: isRecurring ? recurringDays : null,
             zoom: zoom,
         }
 
