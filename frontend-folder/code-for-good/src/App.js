@@ -14,6 +14,8 @@ import EventDetails from "./pages/EventDetails";
 import AdminSignup from './pages/AdminSignup';
 import AdminVerifyDash from './pages/AdminVerifyDash';
 import AdminVerifyDetails from './pages/AdminVerifyDetails';
+import AIChat from './pages/AIChat.js';
+
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
           <Route path="/events/:eventTitle" element={<EventDetails />} />
           <Route path="/tentEventDashboard" element={<AdminVerifyDash />} />
           <Route path="/tentEvents/:tentTitle" element={<AdminVerifyDetails />} />
+          <Route path="/AiChat" element={<AIChat />} />
         </Routes>
       </BrowserRouter>
     </div>

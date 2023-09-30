@@ -4,6 +4,7 @@ import '../styles/UserSignup.css';
 import { db } from '../firebase-config.js';
 import { doc, updateDoc, collection, addDoc, getDocs } from 'firebase/firestore';
 import emailjs from 'emailjs-com';
+import { Link } from 'react-router-dom';
 
 const options = [
   { value: "1", label: "Entertainment" },
@@ -114,7 +115,7 @@ function UserSignup() {
           const from_name = "Code For Good";
           const toEmail = similarUser.email;
           const body = `You have similar interests to a new user, ${data.firstName} ${data.lastName}!`;
-          sendEmail(from_name, toEmail, subject, body);
+          sendEmail(from_name, toEmail, body);
 
 
         const collectionRef = collection(db, 'users');

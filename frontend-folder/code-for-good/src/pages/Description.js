@@ -28,6 +28,11 @@ const Description = () => {
                         Log In
                     </button>
                 </Link>
+                <Link to="/AiChat">
+                    <button type="button" className="signup_button">
+                        Need Help?
+                    </button>
+                </Link>
             </div>
         </div>
         <img className="homeMainImage" src="../MomandDaughterSmiling.jpg" alt="image of Mom and daughter"></img>
